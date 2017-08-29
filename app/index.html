@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PhoneBook</title>
+    <script src="bundle.js"></script>
+</head>
+<body>
+<div class="wrapper" ng-app="app" ng-controller="PhoneBookController as phoneBook">
+    <header>
+        <h1>{{ phoneBook.title }}</h1>
+    </header>
+    <main>
+        <div class="hide-phone-numbers">
+            <input type="checkbox" ng-model="phoneBook.checked"  id="showPhoneNumbers" aria-label="Toggle phone numbers">
+            <label for="showPhoneNumbers">Hide phone numbers</label>
+        </div>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td width="40%">Name</td>
+                    <td width="60%">Phone number</td>
+                </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in phoneBook.users" ng-class="{red: user.name[0] == 'A', blue: user.name[0] == 'B'}">
+                <td>{{ user.name }}</td>
+                <td class="check-element animate-show-hide" ng-show="phoneBook.checked">{{ user.phoneNumber }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+</div>
+<footer>© The Rolling Scopes School 2017</footer>
+</body>
+</html>
