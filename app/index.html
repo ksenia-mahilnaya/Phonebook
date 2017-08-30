@@ -11,10 +11,14 @@
         <h1>{{ phoneBook.title }}</h1>
     </header>
     <main>
-        <div class="hide-phone-numbers">
+        <form class="hide-phone-numbers">
             <input type="checkbox" ng-model="phoneBook.isPhoneNumbersVisible"  id="hidePhoneNumbers" aria-label="Toggle phone numbers">
             <label for="hidePhoneNumbers">Hide phone numbers</label>
-        </div>
+            <input type="text" placeholder="Filter names">
+            <input type="text" ng-model="phoneBook.contactName" placeholder="Name">
+            <input type="tel" ng-model="phoneBook.contactPhoneNumber" placeholder="Phone number">
+            <button ng-click="phoneBook.addContact(phoneBook.contactName, phoneBook.contactPhoneNumber)">Add contact</button>
+        </form>
         <table>
             <thead>
                 <tr>
@@ -23,9 +27,14 @@
                 </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="contact in phoneBook.contacts" ng-class="{red: contact.name[0] === 'A', blue: contact.name[0] == 'B'}">
+            <tr
+                ng-repeat="contact in phoneBook.contacts | orderBy: 'name' | startsWithA"
+                ng-class="{red: contact.name.toLowerCase()[0] === 'a', blue: contact.name.toLowerCase()[0] === 'b'}">
                 <td>{{ contact.name }}</td>
-                <td class="check-element animate-show-hide" ng-show="phoneBook.isPhoneNumbersVisible">{{ contact.phoneNumber }}</td>
+                <td class="check-element animate-show-hide" ng-show="phoneBook.isPhoneNumbersVisible">
+                    {{ contact.phoneNumber }}
+                    <span ng-click="phoneBook.removeContact(contact.name, contact.phoneNumber)">X</span>
+                </td>
             </tr>
             </tbody>
         </table>

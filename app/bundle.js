@@ -100,11 +100,11 @@ var _angular2 = _interopRequireDefault(_angular);
 
 __webpack_require__(7);
 
-var _PhoneBookController = __webpack_require__(24);
+__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./PhoneBookController.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_angular2.default.module('app', [__webpack_require__(25)]).controller('PhoneBookController', _PhoneBookController.PhoneBookController);
+_angular2.default.module('app', [__webpack_require__(24)]);
 
 /***/ }),
 /* 5 */
@@ -34029,8 +34029,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/lib/loader.js!./styles.scss", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/lib/loader.js!./styles.scss");
+		module.hot.accept("!!../../node_modules/css-loader/app.js!../../node_modules/sass-loader/lib/loader.js!./styles.scss", function() {
+			var newContent = require("!!../../node_modules/css-loader/app.js!../../node_modules/sass-loader/lib/loader.js!./styles.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -34048,7 +34048,7 @@ exports = module.exports = __webpack_require__(9)(undefined);
 
 
 // module
-exports.push([module.i, "* {\n  font-family: inherit;\n  font-size: 100%;\n  font-weight: inherit;\n  font-style: inherit;\n  margin: 0;\n  padding: 0;\n  vertical-align: baseline;\n  border: 0 none; }\n\nhtml {\n  height: 100%; }\n\nbody {\n  min-height: 100%;\n  position: relative;\n  background: #d8d8d8;\n  font-family: 'Gotham Book';\n  color: #666; }\n\n.wrapper {\n  padding-bottom: 70px; }\n\nheader {\n  width: 100%;\n  height: 63px;\n  background: #464c59;\n  color: #fff;\n  font-family: 'Gotham Medium';\n  font-size: 17px;\n  line-height: 63px;\n  text-align: center;\n  text-transform: uppercase; }\n\nmain {\n  width: 400px;\n  margin: 30px auto 0;\n  background: #f4f4f4; }\n\ntable {\n  border-spacing: 0;\n  border-collapse: collapse; }\n\ntable {\n  width: 100%; }\n\ntd {\n  padding: 5px;\n  border: 1px solid #2a2d34; }\n\n.contact-name {\n  width: 40%; }\n\n.contact-phone-number {\n  width: 40%; }\n\n.hide-phone-numbers {\n  padding: 5px;\n  border-top: 1px solid #2a2d34;\n  border-right: 1px solid #2a2d34;\n  border-left: 1px solid #2a2d34; }\n\n.red {\n  background: #dc6362;\n  color: #e5e5e5; }\n\n.blue {\n  background: #505766;\n  color: #e5e5e5; }\n\n.animate-show-hide.ng-hide {\n  opacity: 0; }\n\n.animate-show-hide.ng-hide-add,\n.animate-show-hide.ng-hide-remove {\n  transition: all linear 0.8s; }\n\n.check-element {\n  opacity: 1; }\n\nfooter {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  height: 70px;\n  width: 100%;\n  background: #363a44;\n  font-family: 'Gotham Book';\n  font-size: 14px;\n  line-height: 63px;\n  color: #fff;\n  text-align: center; }\n\n/*****FONTS********/\n@font-face {\n  font-family: 'Gotham Bold';\n  src: url(\"" + __webpack_require__(0) + "\");\n  src: url(\"" + __webpack_require__(0) + "?#iefix\") format(\"embedded-opentype\"), url(\"" + __webpack_require__(10) + "\") format(\"woff2\"), url(\"" + __webpack_require__(11) + "\") format(\"woff\"), url(\"" + __webpack_require__(12) + "#Gotham Bold\") format(\"svg\");\n  font-weight: 700;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Book';\n  src: url(" + __webpack_require__(1) + ");\n  src: url(" + __webpack_require__(1) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(13) + ") format(\"woff2\"), url(" + __webpack_require__(14) + ") format(\"woff\"), url(" + __webpack_require__(15) + "#Gotham-Book) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Light';\n  src: url(" + __webpack_require__(2) + ");\n  src: url(" + __webpack_require__(2) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(16) + ") format(\"woff2\"), url(" + __webpack_require__(17) + ") format(\"woff\"), url(" + __webpack_require__(18) + "#Gotham-Light) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Medium';\n  src: url(" + __webpack_require__(3) + ");\n  src: url(" + __webpack_require__(3) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(19) + ") format(\"woff2\"), url(" + __webpack_require__(20) + ") format(\"woff\"), url(" + __webpack_require__(21) + "#Gotham-Medium) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n", ""]);
+exports.push([module.i, "* {\n  font-family: inherit;\n  font-size: 100%;\n  font-weight: inherit;\n  font-style: inherit;\n  margin: 0;\n  padding: 0;\n  vertical-align: baseline;\n  border: 0 none; }\n\nhtml {\n  height: 100%; }\n\nbody {\n  min-height: 100%;\n  position: relative;\n  background: #d8d8d8;\n  font-family: 'Gotham Book';\n  color: #666; }\n\n.wrapper {\n  padding-bottom: 70px; }\n\nheader {\n  width: 100%;\n  height: 63px;\n  background: #464c59;\n  color: #fff;\n  font-family: 'Gotham Medium';\n  font-size: 17px;\n  line-height: 63px;\n  text-align: center;\n  text-transform: uppercase; }\n\nmain {\n  width: 400px;\n  margin: 30px auto 0;\n  background: #f4f4f4; }\n\ntable {\n  border-spacing: 0;\n  border-collapse: collapse; }\n\ntable {\n  width: 100%; }\n\ntd {\n  padding: 5px;\n  border: 1px solid #2a2d34; }\n\n.contact-name {\n  width: 40%; }\n\n.contact-phone-number {\n  width: 60%; }\n\n.hide-phone-numbers {\n  padding: 5px;\n  border-top: 1px solid #2a2d34;\n  border-right: 1px solid #2a2d34;\n  border-left: 1px solid #2a2d34; }\n\n.red {\n  background: #dc6362;\n  color: #e5e5e5; }\n\n.blue {\n  background: #505766;\n  color: #e5e5e5; }\n\n.animate-show-hide.ng-hide {\n  opacity: 0; }\n\n.animate-show-hide.ng-hide-add,\n.animate-show-hide.ng-hide-remove {\n  transition: all linear 0.8s; }\n\n.check-element {\n  opacity: 1; }\n\nfooter {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  height: 70px;\n  width: 100%;\n  background: #363a44;\n  font-family: 'Gotham Book';\n  font-size: 14px;\n  line-height: 63px;\n  color: #fff;\n  text-align: center; }\n\n/*****FONTS********/\n@font-face {\n  font-family: 'Gotham Bold';\n  src: url(\"" + __webpack_require__(0) + "\");\n  src: url(\"" + __webpack_require__(0) + "?#iefix\") format(\"embedded-opentype\"), url(\"" + __webpack_require__(10) + "\") format(\"woff2\"), url(\"" + __webpack_require__(11) + "\") format(\"woff\"), url(\"" + __webpack_require__(12) + "#Gotham Bold\") format(\"svg\");\n  font-weight: 700;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Book';\n  src: url(" + __webpack_require__(1) + ");\n  src: url(" + __webpack_require__(1) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(13) + ") format(\"woff2\"), url(" + __webpack_require__(14) + ") format(\"woff\"), url(" + __webpack_require__(15) + "#Gotham-Book) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Light';\n  src: url(" + __webpack_require__(2) + ");\n  src: url(" + __webpack_require__(2) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(16) + ") format(\"woff2\"), url(" + __webpack_require__(17) + ") format(\"woff\"), url(" + __webpack_require__(18) + "#Gotham-Light) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Medium';\n  src: url(" + __webpack_require__(3) + ");\n  src: url(" + __webpack_require__(3) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(19) + ") format(\"woff2\"), url(" + __webpack_require__(20) + ") format(\"woff\"), url(" + __webpack_require__(21) + "#Gotham-Medium) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n", ""]);
 
 // exports
 
@@ -34665,64 +34665,12 @@ module.exports = function (css) {
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-function PhoneBookController() {
-    this.title = 'Phonebook';
-    this.users = [{
-        name: 'Ann',
-        phoneNumber: '+375(33)4366445'
-    }, {
-        name: 'Max',
-        phoneNumber: '+375(29)4562387'
-    }, {
-        name: 'Brom',
-        phoneNumber: '+375(44)4562786'
-    }, {
-        name: 'Dave',
-        phoneNumber: '+375(22)3453455'
-    }, {
-        name: 'Alonso',
-        phoneNumber: '+375(33)6767674'
-    }, {
-        name: 'Biber',
-        phoneNumber: '+375(33)2347876'
-    }, {
-        name: 'Joe',
-        phoneNumber: '+375(25)4366445'
-    }, {
-        name: 'Bucket',
-        phoneNumber: '+375(25)7777654'
-    }, {
-        name: 'Donald',
-        phoneNumber: '+375(44)4366445'
-    }, {
-        name: 'Aloha',
-        phoneNumber: '+375(44)234567'
-    }, {
-        name: 'Chip',
-        phoneNumber: '+375(29)4562345'
-    }];
-    this.checked = true;
-}
-
-exports.PhoneBookController = PhoneBookController;
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(26);
+__webpack_require__(25);
 module.exports = 'ngAnimate';
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports) {
 
 /**
