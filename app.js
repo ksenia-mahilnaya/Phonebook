@@ -1,7 +1,6 @@
-//const angular = require('angular');
 import angular from 'angular';
-import {PhoneBookController} from './app/main/PhoneBookController';
 import './app/styles/styles.scss';
+import { PhoneBookController } from './app/controllers/PhoneBookController';
+angular.module('app', [require('angular-animate')]).controller('PhoneBookController', PhoneBookController);
 
-angular.module('app', [require('angular-animate')])
-    .controller('PhoneBookController', PhoneBookController);
+

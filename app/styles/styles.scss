@@ -48,9 +48,21 @@ table {
     border-collapse: collapse;
 }
 
+table {
+    width: 100%;
+}
+
 td {
     padding: 5px;
     border: 1px solid #2a2d34;
+}
+
+.contact-name {
+     width: 40%;
+ }
+
+.contact-phone-number {
+    width: 60%;
 }
 
 .hide-phone-numbers {

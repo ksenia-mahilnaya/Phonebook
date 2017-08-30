@@ -12,20 +12,20 @@
     </header>
     <main>
         <div class="hide-phone-numbers">
-            <input type="checkbox" ng-model="phoneBook.checked"  id="showPhoneNumbers" aria-label="Toggle phone numbers">
-            <label for="showPhoneNumbers">Hide phone numbers</label>
+            <input type="checkbox" ng-model="phoneBook.isPhoneNumbersVisible"  id="hidePhoneNumbers" aria-label="Toggle phone numbers">
+            <label for="hidePhoneNumbers">Hide phone numbers</label>
         </div>
-        <table width="100%">
+        <table>
             <thead>
                 <tr>
-                    <td width="40%">Name</td>
-                    <td width="60%">Phone number</td>
+                    <td class="contact-name">Name</td>
+                    <td class="contact-phone-number">Phone number</td>
                 </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="user in phoneBook.users" ng-class="{red: user.name[0] == 'A', blue: user.name[0] == 'B'}">
-                <td>{{ user.name }}</td>
-                <td class="check-element animate-show-hide" ng-show="phoneBook.checked">{{ user.phoneNumber }}</td>
+            <tr ng-repeat="contact in phoneBook.contacts" ng-class="{red: contact.name[0] === 'A', blue: contact.name[0] == 'B'}">
+                <td>{{ contact.name }}</td>
+                <td class="check-element animate-show-hide" ng-show="phoneBook.isPhoneNumbersVisible">{{ contact.phoneNumber }}</td>
             </tr>
             </tbody>
         </table>

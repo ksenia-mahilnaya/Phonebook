@@ -1,6 +1,7 @@
+
 function PhoneBookController() {
     this.title = 'Phonebook';
-    this.users = [
+    this.contacts = [
         {
             name: 'Ann',
             phoneNumber: '+375(33)4366445'
@@ -46,7 +47,7 @@ function PhoneBookController() {
             phoneNumber: '+375(29)4562345'
         }
     ];
-    this.checked = true;
+    this.isPhoneNumbersVisible = true;
 
 }
 
