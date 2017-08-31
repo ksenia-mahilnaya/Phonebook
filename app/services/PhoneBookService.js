@@ -1,5 +1,5 @@
 export default function PhoneBookService() {
-    this.contacts = [
+    const contacts = [
         {
             name: 'Ann',
             phoneNumber: '+375(33)4366445'
@@ -45,21 +45,33 @@ export default function PhoneBookService() {
             phoneNumber: '+375(29)4562345'
         }
     ];
+
+    this.contacts = localStorage.getItem("contacts");
+    this.contacts = this.contacts ? JSON.parse(this.contacts) : contacts;
+
+    console.log(this.contacts);
+
     this.addContact = function(name, phoneNumber) {
         if (name && phoneNumber) {
-            this.contacts.push({
+            const contacts = JSON.parse(localStorage.contacts);
+            contacts.push({
                 name: name,
                 phoneNumber: phoneNumber
             });
+            localStorage.setItem("contacts", JSON.stringify(contacts));
+            this.contacts = JSON.parse(localStorage.getItem("contacts"));
         }
         this.contactName = '';
         this.contactPhoneNumber = null;
     };
+
     this.removeContact = function(name, phoneNumber) {
-        const indexContactToRemove = this.contacts.findIndex((item) => item.name === name && item.phoneNumber === phoneNumber);
-        this.contacts.splice(indexContactToRemove, 1);
+
     };
+
     this.getAll = function() {
         return this.contacts;
     };
+
+
 }

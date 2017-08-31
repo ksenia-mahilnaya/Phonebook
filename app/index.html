@@ -14,10 +14,11 @@
         <form>
             <fieldset>
                 <dl>
-                    <dd class="hide-phone-numbers"><input type="checkbox" ng-model="phoneBook.isPhoneNumbersVisible"
-                        id="hidePhoneNumbers" aria-label="Toggle phone numbers">
+                    <dd class="show-phone-numbers">
+                        <input type="checkbox" ng-model="phoneBook.isPhoneNumbersVisible"
+                            id="showPhoneNumbers" aria-label="Toggle phone numbers">
                     </dd>
-                    <dt class="hide-phone-numbers"><label for="hidePhoneNumbers">Hide phone numbers</label></dt>
+                    <dt class="show-phone-numbers"><label for="showPhoneNumbers">Show phone numbers</label></dt>
                     <dt><label for="searchText">Filter contacts</label></dt>
                     <dd>
                         <input ng-model="searchText" name="searchText" id="searchText"
@@ -47,15 +48,17 @@
                 ng-class="{'highlight-with-red': contact.name.toLowerCase()[0] === 'a',
                     'highlight-with-blue': contact.name.toLowerCase()[0] === 'b'}">
                 <td>{{ contact.name }}</td>
-                <td class="is-phone-numbers-visible animate-show-hide" ng-show="phoneBook.isPhoneNumbersVisible">
+                <td class="is-phone-numbers-visible animate-show-hide" ng-show="phoneBook.isPhoneNumbersVisible" >
                     {{ contact.phoneNumber }}
-                    <span class="remove-contact" ng-click="phoneBook.removeContact(contact.name, contact.phoneNumber)"></span>
+                    <span class="remove-contact"
+                          ng-click="phoneBook.removeContact(contact.name, contact.phoneNumber)">
+                    </span>
                 </td>
             </tr>
             </tbody>
         </table>
     </main>
 </div>
-<footer>© The Rolling Scopes School 2017</footer>
+<footer>© Awesome Mentor 2017</footer>
 </body>
 </html>

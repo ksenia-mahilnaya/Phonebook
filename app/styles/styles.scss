@@ -69,7 +69,7 @@ form {
     border-left: 1px solid $color-form-border;
 }
 
-.hide-phone-numbers {
+.show-phone-numbers {
     display: inline-block;
 }
 
@@ -128,7 +128,9 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+button:hover,
+button:focus,
+button:active {
     background: $color-remove-contact-hover;
 }
 
@@ -151,6 +153,8 @@ td {
     margin-right: 5px;
 }
 
+.remove-contact:hover::after,
+.remove-contact:focus::after,
 .remove-contact:hover::after {
     color: $color-remove-contact-hover;
 }
@@ -252,4 +256,3 @@ footer {
     font-stretch: normal;
     unicode-range: U+0020-00FE;
 }
-
