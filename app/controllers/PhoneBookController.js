@@ -4,5 +4,4 @@ export default function PhoneBookController(PhoneBookService) {
     this.isPhoneNumbersVisible = true;
     this.addContact = PhoneBookService.addContact;
     this.removeContact = PhoneBookService.removeContact;
-    this.letter = '';
 }

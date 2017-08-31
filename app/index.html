@@ -12,12 +12,29 @@
     </header>
     <main>
         <form class="hide-phone-numbers">
-            <input type="checkbox" ng-model="phoneBook.isPhoneNumbersVisible"  id="hidePhoneNumbers" aria-label="Toggle phone numbers">
-            <label for="hidePhoneNumbers">Hide phone numbers</label>
-            <input type="text" placeholder="Filter names">
-            <input type="text" ng-model="phoneBook.contactName" placeholder="Name">
-            <input type="tel" ng-model="phoneBook.contactPhoneNumber" placeholder="Phone number">
-            <button ng-click="phoneBook.addContact(phoneBook.contactName, phoneBook.contactPhoneNumber)">Add contact</button>
+            <fieldset>
+                <dl>
+                    <dd><input type="checkbox" ng-model="phoneBook.isPhoneNumbersVisible"  id="hidePhoneNumbers"
+                               aria-label="Toggle phone numbers">
+                    </dd>
+                    <dt><label for="hidePhoneNumbers">Hide phone numbers</label></dt>
+
+                    <dt><label for="searchText">Filter contacts</label></dt>
+                    <dd>
+                        <input ng-model="searchText" name="searchText" id="searchText"
+                               placeholder="Start typing first letters" />
+                    </dd>
+
+                    <dt><label for="contactName">Add new contact</label></dt>
+                    <dd>
+                        <input ng-model="phoneBook.contactName" placeholder="Name" id="contactName">
+                        <input type="tel" ng-model="phoneBook.contactPhoneNumber" placeholder="Phone number">
+                    </dd>
+                </dl>
+                <button ng-click="phoneBook.addContact(phoneBook.contactName, phoneBook.contactPhoneNumber)">
+                    Add contact
+                </button>
+            </fieldset>
         </form>
         <table>
             <thead>
@@ -28,7 +45,7 @@
             </thead>
             <tbody>
             <tr
-                ng-repeat="contact in phoneBook.contacts | orderBy: 'name' | startsWithA"
+                ng-repeat="contact in phoneBook.contacts | orderBy: 'name' | PhoneBookFilter:searchText "
                 ng-class="{red: contact.name.toLowerCase()[0] === 'a', blue: contact.name.toLowerCase()[0] === 'b'}">
                 <td>{{ contact.name }}</td>
                 <td class="check-element animate-show-hide" ng-show="phoneBook.isPhoneNumbersVisible">

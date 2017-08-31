@@ -43,13 +43,14 @@ main {
     background: #f4f4f4;
 }
 
-table {
-    border-spacing: 0;
-    border-collapse: collapse;
+dt, dd {
+
 }
 
 table {
     width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
 }
 
 td {
