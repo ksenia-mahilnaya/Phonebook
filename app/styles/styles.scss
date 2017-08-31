@@ -34,7 +34,7 @@ html {
 
 body {
     min-height: 100%;
-    position: relative;
+    //position: relative;
     background: $color-body-background;
     font-family: $font-book;
     color: $color-body-text;
@@ -160,11 +160,11 @@ td {
 }
 
 .contact-name {
-     width: 40%;
+     width: 50%;
  }
 
 .contact-phone-number {
-    width: 60%;
+    width: 50%;
 }
 
 .highlight-with-red {
@@ -191,9 +191,9 @@ td {
 }
 
 footer {
-    position: absolute;
+    /*position: absolute;
     left:0;
-    bottom:0;
+    bottom:0;*/
     height: 70px;
     width: 100%;
     background: $color-footer-background;
