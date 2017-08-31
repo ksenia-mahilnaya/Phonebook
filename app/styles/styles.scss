@@ -1,3 +1,22 @@
+$font-book: 'Gotham Book';
+$font-medium: 'Gotham Medium';
+$font-light: 'Gotham Light';
+$font-bold: 'Gotham Bold';
+
+$color-base: #464c59;
+$color-border: #2a2d34;
+$color-white: #fff;
+$color-highlight-with-red: #dc6362;
+$color-highlight-with-blue: #505766;
+$color-body-background: #d8d8d8;
+$color-main-background: #f4f4f4;
+$color-placeholders: #b4b4b4;
+$color-body-text: #666;
+$color-form-border: #2a2d34;
+$color-font-light: #e5e5e5;
+$color-footer-background: #363a44;
+$color-remove-contact-hover: #373c46;
+
 * {
     font-family: inherit;
     font-size: 100%;
@@ -16,9 +35,9 @@ html {
 body {
     min-height: 100%;
     position: relative;
-    background: #d8d8d8;
-    font-family:'Gotham Book';
-    color: #666;
+    background: $color-body-background;
+    font-family: $font-book;
+    color: $color-body-text;
 }
 
 .wrapper {
@@ -28,9 +47,9 @@ body {
 header {
     width: 100%;
     height: 63px;
-    background: #464c59;
-    color: #fff;
-    font-family:'Gotham Medium';
+    background: $color-base;
+    color: $color-white;
+    font-family: $font-medium;
     font-size: 17px;
     line-height: 63px;
     text-align:  center;
@@ -38,13 +57,79 @@ header {
 }
 
 main {
-    width: 400px;
+    width: 433px;
     margin: 30px auto 0;
-    background: #f4f4f4;
+    background: $color-main-background;
+}
+
+form {
+    padding: 10px;
+    border-top: 1px solid $color-form-border;
+    border-right: 1px solid $color-form-border;
+    border-left: 1px solid $color-form-border;
+}
+
+.hide-phone-numbers {
+    display: inline-block;
+}
+
+dl{
+   padding-top: 10px;
 }
 
 dt, dd {
+    margin-bottom: 9px;
+}
 
+input {
+    padding: 7px 7px;
+    border-radius: 3px;
+    border: 1px solid $color-placeholders;
+}
+
+input#searchText {
+    width: 397px;
+}
+
+::-webkit-input-placeholder {
+    font-family: $font-light;
+    font-size: 14px;
+    color: $color-placeholders;
+}
+
+/* Firefox 19+ */
+::-moz-placeholder {
+    font-family: $font-light;
+    font-size: 14px;
+    color: $color-placeholders;
+}
+
+/* Firefox 18- */
+:-moz-placeholder {
+    font-family: $font-light;
+    font-size: 14px;
+    color: $color-placeholders;
+}
+
+:-ms-input-placeholder {
+    font-family: $font-light;
+    font-size: 14px;
+    color: $color-placeholders;
+}
+
+button {
+    padding: 9px 12px;
+    border-radius: 3px;
+    background: $color-highlight-with-blue;
+    color: $color-font-light;
+    text-transform: uppercase;
+    font-size: 14px;
+    float: right;
+    cursor: pointer;
+}
+
+button:hover {
+    background: $color-remove-contact-hover;
 }
 
 table {
@@ -55,7 +140,19 @@ table {
 
 td {
     padding: 5px;
-    border: 1px solid #2a2d34;
+    border: 1px solid $color-border;
+}
+
+.remove-contact::after {
+    content: 'x';
+    float: right;
+    font-family: $font-bold;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.remove-contact:hover::after {
+    color: $color-remove-contact-hover;
 }
 
 .contact-name {
@@ -66,20 +163,14 @@ td {
     width: 60%;
 }
 
-.hide-phone-numbers {
-    padding: 5px;
-    border-top: 1px solid #2a2d34;
-    border-right: 1px solid #2a2d34;
-    border-left: 1px solid #2a2d34;
+.highlight-with-red {
+    background: $color-highlight-with-red;
+    color: $color-font-light;
 }
 
-.red {
-    background: #dc6362;
-    color: #e5e5e5;
-}
-.blue {
-    background: #505766;
-    color: #e5e5e5;
+.highlight-with-blue {
+    background: $color-highlight-with-blue;
+    color: $color-font-light;
 }
 
 .animate-show-hide.ng-hide {
@@ -91,7 +182,7 @@ td {
     transition: all linear 0.8s;
 }
 
-.check-element {
+.is-phone-numbers-visible {
     opacity: 1;
 }
 
@@ -101,11 +192,11 @@ footer {
     bottom:0;
     height: 70px;
     width: 100%;
-    background: #363a44;
-    font-family:'Gotham Book';
+    background: $color-footer-background;
+    font-family: $font-book;
     font-size: 14px;
     line-height: 63px;
-    color: #fff;
+    color: $color-white;
     text-align:  center;
 }
 

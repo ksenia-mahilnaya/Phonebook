@@ -11,20 +11,18 @@
         <h1>{{ phoneBook.title }}</h1>
     </header>
     <main>
-        <form class="hide-phone-numbers">
+        <form>
             <fieldset>
                 <dl>
-                    <dd><input type="checkbox" ng-model="phoneBook.isPhoneNumbersVisible"  id="hidePhoneNumbers"
-                               aria-label="Toggle phone numbers">
+                    <dd class="hide-phone-numbers"><input type="checkbox" ng-model="phoneBook.isPhoneNumbersVisible"
+                        id="hidePhoneNumbers" aria-label="Toggle phone numbers">
                     </dd>
-                    <dt><label for="hidePhoneNumbers">Hide phone numbers</label></dt>
-
+                    <dt class="hide-phone-numbers"><label for="hidePhoneNumbers">Hide phone numbers</label></dt>
                     <dt><label for="searchText">Filter contacts</label></dt>
                     <dd>
                         <input ng-model="searchText" name="searchText" id="searchText"
                                placeholder="Start typing first letters" />
                     </dd>
-
                     <dt><label for="contactName">Add new contact</label></dt>
                     <dd>
                         <input ng-model="phoneBook.contactName" placeholder="Name" id="contactName">
@@ -46,11 +44,12 @@
             <tbody>
             <tr
                 ng-repeat="contact in phoneBook.contacts | orderBy: 'name' | PhoneBookFilter:searchText "
-                ng-class="{red: contact.name.toLowerCase()[0] === 'a', blue: contact.name.toLowerCase()[0] === 'b'}">
+                ng-class="{'highlight-with-red': contact.name.toLowerCase()[0] === 'a',
+                    'highlight-with-blue': contact.name.toLowerCase()[0] === 'b'}">
                 <td>{{ contact.name }}</td>
-                <td class="check-element animate-show-hide" ng-show="phoneBook.isPhoneNumbersVisible">
+                <td class="is-phone-numbers-visible animate-show-hide" ng-show="phoneBook.isPhoneNumbersVisible">
                     {{ contact.phoneNumber }}
-                    <span ng-click="phoneBook.removeContact(contact.name, contact.phoneNumber)">X</span>
+                    <span class="remove-contact" ng-click="phoneBook.removeContact(contact.name, contact.phoneNumber)"></span>
                 </td>
             </tr>
             </tbody>
