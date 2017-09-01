@@ -57,8 +57,9 @@ export default function PhoneBookService() {
                 name: name,
                 phoneNumber: phoneNumber
             });
+            localStorage.setItem('contacts', JSON.stringify(this.contacts));
             console.log(this.contacts);
-            //localStorage.setItem('contacts', JSON.stringify(this.contacts))
+            console.log(localStorage.getItem("contacts"));
         }
         this.contactName = '';
         this.contactPhoneNumber = null;
@@ -69,6 +70,7 @@ export default function PhoneBookService() {
             (item) => item.name === name && item.phoneNumber === phoneNumber
         );
         this.contacts.splice(indexContactToRemove, 1);
+        localStorage.setItem('contacts', JSON.stringify(this.contacts));
     };
 
     this.getAll = function() {
