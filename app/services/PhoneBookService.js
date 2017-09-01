@@ -46,6 +46,8 @@ export default function PhoneBookService() {
         }
     ];
 
+    //localStorage.clear();
+
     this.contacts = localStorage.getItem("contacts");
     this.contacts = this.contacts ? JSON.parse(this.contacts) : contacts;
 

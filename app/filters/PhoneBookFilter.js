@@ -8,6 +8,7 @@ export default function PhoneBookFilter() {
                 filtered.push(item);
             }
         }
+        console.log(filtered);
         return filtered;
     }
 }
