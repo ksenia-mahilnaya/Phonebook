@@ -46,25 +46,19 @@ export default function PhoneBookService() {
         }
     ];
 
+    //localStorage.clear();
     this.contacts = localStorage.getItem("contacts");
     this.contacts = this.contacts ? JSON.parse(this.contacts) : contacts;
 
-
+    console.log(this.contacts);
     this.addContact = function(name, phoneNumber) {
-        /*if (name && phoneNumber) {
-            const contacts = JSON.parse(localStorage.contacts);
-            contacts.push({
-                name: name,
-                phoneNumber: phoneNumber
-            });
-            localStorage.setItem("contacts", JSON.stringify(contacts));
-            this.contacts = JSON.parse(localStorage.getItem("contacts"));
-        }*/
         if (name && phoneNumber) {
             this.contacts.push({
                 name: name,
                 phoneNumber: phoneNumber
             });
+            console.log(this.contacts);
+            //localStorage.setItem('contacts', JSON.stringify(this.contacts))
         }
         this.contactName = '';
         this.contactPhoneNumber = null;
