@@ -34085,8 +34085,8 @@ function PhoneBookService() {
     }];
 
     //localStorage.clear();
-    this.contacts = localStorage.getItem("contacts");
-    this.contacts = this.contacts ? JSON.parse(this.contacts) : contacts;
+    this.contacts = JSON.parse(localStorage.getItem("contacts"));
+    this.contacts = this.contacts ? this.contacts : contacts;
 
     console.log(this.contacts);
     this.addContact = function (name, phoneNumber) {
@@ -34095,8 +34095,9 @@ function PhoneBookService() {
                 name: name,
                 phoneNumber: phoneNumber
             });
+            localStorage.setItem('contacts', JSON.stringify(this.contacts));
             console.log(this.contacts);
-            //localStorage.setItem('contacts', JSON.stringify(this.contacts))
+            console.log(localStorage.getItem("contacts"));
         }
         this.contactName = '';
         this.contactPhoneNumber = null;
@@ -34107,6 +34108,7 @@ function PhoneBookService() {
             return item.name === name && item.phoneNumber === phoneNumber;
         });
         this.contacts.splice(indexContactToRemove, 1);
+        localStorage.setItem('contacts', JSON.stringify(this.contacts));
     };
 
     this.getAll = function () {

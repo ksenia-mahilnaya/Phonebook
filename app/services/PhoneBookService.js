@@ -46,11 +46,9 @@ export default function PhoneBookService() {
         }
     ];
 
-    //localStorage.clear();
     this.contacts = localStorage.getItem("contacts");
     this.contacts = this.contacts ? JSON.parse(this.contacts) : contacts;
 
-    console.log(this.contacts);
     this.addContact = function(name, phoneNumber) {
         if (name && phoneNumber) {
             this.contacts.push({
@@ -58,8 +56,6 @@ export default function PhoneBookService() {
                 phoneNumber: phoneNumber
             });
             localStorage.setItem('contacts', JSON.stringify(this.contacts));
-            console.log(this.contacts);
-            console.log(localStorage.getItem("contacts"));
         }
         this.contactName = '';
         this.contactPhoneNumber = null;
