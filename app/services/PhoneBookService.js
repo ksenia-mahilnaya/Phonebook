@@ -50,8 +50,6 @@ export default function PhoneBookService() {
             });
             localStorage.setItem('contacts', angular.toJson(this.contacts));
         }
-        this.contactName = '';
-        this.contactPhoneNumber = null;
     };
 
     this.removeContact = function(name, phoneNumber) {
