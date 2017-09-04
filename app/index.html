@@ -14,49 +14,13 @@
         <form>
             <fieldset>
                 <dl>
-                    <dd class="show-phone-numbers">
-                        <input type="checkbox" ng-model="phoneBook.isPhoneNumbersVisible"
-                            id="showPhoneNumbers" aria-label="Toggle phone numbers">
-                    </dd>
-                    <dt class="show-phone-numbers"><label for="showPhoneNumbers">Show phone numbers</label></dt>
-                    <dt><label for="searchText">Filter contacts</label></dt>
-                    <dd>
-                        <input ng-model="searchText" name="searchText" id="searchText"
-                               placeholder="Start typing first letters" />
-                    </dd>
-                    <dt><label for="contactName">Add new contact</label></dt>
-                    <dd>
-                        <input ng-model="phoneBook.contactName" placeholder="Name" id="contactName">
-                        <input type="tel" ng-model="phoneBook.contactPhoneNumber" placeholder="Phone number">
-                    </dd>
+                    <show-phone-numbers></show-phone-numbers>
+                    <search-text></search-text>
+                    <add-new-contact></add-new-contact>
                 </dl>
-                <button ng-click="phoneBook.addContact(phoneBook.contactName, phoneBook.contactPhoneNumber)">
-                    Add contact
-                </button>
             </fieldset>
         </form>
-        <table>
-            <thead>
-                <tr>
-                    <td class="contact-name">Name</td>
-                    <td class="contact-phone-number">Phone number</td>
-                </tr>
-            </thead>
-            <tbody>
-            <tr
-                ng-repeat="contact in phoneBook.getAll() | orderBy: 'name' | PhoneBookFilter:searchText "
-                ng-class="{'highlight-with-red': contact.name.toLowerCase()[0] === 'a',
-                    'highlight-with-blue': contact.name.toLowerCase()[0] === 'b'}">
-                <td>{{ contact.name}}</td>
-                <td class="is-phone-numbers-visible animate-show-hide" ng-show="phoneBook.isPhoneNumbersVisible" >
-                    {{ contact.phoneNumber }}
-                    <span class="remove-contact"
-                          ng-click="phoneBook.removeContact(contact.name, contact.phoneNumber)">
-                    </span>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <contacts></contacts>
     </main>
 </div>
 <footer>© Awesome Mentor 2017</footer>

@@ -1,0 +1,7 @@
+<td>{{ contact.name}}</td>
+<td class="is-phone-numbers-visible animate-show-hide" ng-show="phoneBook.isPhoneNumbersVisible" >
+    {{ contact.phoneNumber }}
+    <span class="remove-contact"
+          ng-click="phoneBook.removeContact(contact.name, contact.phoneNumber)">
+                    </span>
+</td>

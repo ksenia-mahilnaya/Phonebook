@@ -1,0 +1,9 @@
+<dt><label for="contactName">Add new contact</label></dt>
+<dd>
+    <input ng-model="phoneBook.contactName" placeholder="Name" id="contactName">
+    <input type="tel" ng-model="phoneBook.contactPhoneNumber" placeholder="Phone number">
+</dd>
+</dl>
+<button ng-click="phoneBook.addContact(phoneBook.contactName, phoneBook.contactPhoneNumber)">
+    Add contact
+</button>
