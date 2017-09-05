@@ -3,6 +3,7 @@ export default function singleContact() {
         restrict: 'A',
         controller: function($scope, PhoneBookService) {
             $scope.removeContact = function(name, phoneNumber) {
+                //removeContact({name: name, phoneNumber: phoneNumber});
                 PhoneBookService.removeContact(name, phoneNumber);
             };
         },

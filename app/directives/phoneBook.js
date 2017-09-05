@@ -4,6 +4,10 @@ export default function phoneBook() {
         controller: function($scope) {
             $scope.searchText = '';
             $scope.isNumbersVisible = true;
+
+            $scope.changeNumberVisibility = function(isNumbersVisible) {
+                $scope.isNumbersVisible = !!isNumbersVisible;
+            }
         },
         templateUrl: './templates/phone-book.html'
     };
