@@ -1,6 +1,12 @@
 export default function singleContact() {
     return {
-        restrict: 'E',
-        templateUrl: 'directives/single-contact.html'
+        restrict: 'AE',
+        controller: function($scope) {
+            console.log($scope.isPhoneNumbersVisible);
+        },
+        link: function(scope, element){
+
+        },
+        templateUrl: './templates/single-contact.html'
     };
 }

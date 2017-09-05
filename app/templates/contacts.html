@@ -1,0 +1,15 @@
+<table>
+    <thead>
+    <tr>
+        <td class="contact-name">Name</td>
+        <td class="contact-phone-number">Phone number</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+        ng-repeat="contact in phoneBook.getAll() | orderBy: 'name' | PhoneBookFilter:searchText "
+        ng-class="{'highlight-with-red': contact.name.toLowerCase()[0] === 'a',
+        'highlight-with-blue': contact.name.toLowerCase()[0] === 'b'}" single-contact>
+    </tr>
+    </tbody>
+</table>

@@ -8,6 +8,7 @@ import searchText from './app/directives/searchText';
 import addNewContact from './app/directives/addNewContact';
 import contacts from './app/directives/contacts';
 import singleContact from './app/directives/singleContact';
+import phoneBook from './app/directives/phoneBook';
 
 import './app/styles/styles.scss';
 
@@ -19,7 +20,8 @@ angular.module('app', [require('angular-animate')])
     .directive('searchText', searchText)
     .directive('addNewContact', addNewContact)
     .directive('contacts', contacts)
-    .directive('singleContact', singleContact);
+    .directive('singleContact', singleContact)
+    .directive('phoneBook', phoneBook);
 
 
 

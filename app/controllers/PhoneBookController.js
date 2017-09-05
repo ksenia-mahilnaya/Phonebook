@@ -1,7 +1,7 @@
 export default function PhoneBookController(PhoneBookService) {
     this.contacts = PhoneBookService.contacts;
     this.title = 'Phonebook';
-    this.isPhoneNumbersVisible = true;
+    //this.isPhoneNumbersVisible = true;
     this.addContact = function(name, phoneNumber) {
         PhoneBookService.addContact(name, phoneNumber);
         this.contactName = '';
