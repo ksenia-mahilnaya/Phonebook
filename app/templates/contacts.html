@@ -7,9 +7,9 @@
     </thead>
     <tbody>
     <tr
-        ng-repeat="contact in phoneBook.getAll() | orderBy: 'name' | PhoneBookFilter:searchText "
-        ng-class="{'highlight-with-red': contact.name.toLowerCase()[0] === 'a',
-        'highlight-with-blue': contact.name.toLowerCase()[0] === 'b'}" single-contact>
+        ng-repeat="contact in allContacts | orderBy: 'name' | PhoneBookFilter:searchText"
+        add-class="contact.name" contact="contact"
+        is-numbers-visible="isNumbersVisible" single-contact>
     </tr>
     </tbody>
 </table>

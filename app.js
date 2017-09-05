@@ -1,6 +1,5 @@
 import angular from 'angular';
 
-import PhoneBookController from './app/controllers/PhoneBookController';
 import PhoneBookService from './app/services/PhoneBookService';
 import PhoneBookFilter from './app/filters/PhoneBookFilter';
 import showPhoneNumbers from './app/directives/showPhoneNumbers';
@@ -9,11 +8,11 @@ import addNewContact from './app/directives/addNewContact';
 import contacts from './app/directives/contacts';
 import singleContact from './app/directives/singleContact';
 import phoneBook from './app/directives/phoneBook';
+import addClass from './app/directives/addClass';
 
 import './app/styles/styles.scss';
 
 angular.module('app', [require('angular-animate')])
-    .controller('PhoneBookController', PhoneBookController)
     .service('PhoneBookService', PhoneBookService)
     .filter('PhoneBookFilter', PhoneBookFilter)
     .directive('showPhoneNumbers', showPhoneNumbers)
@@ -21,7 +20,8 @@ angular.module('app', [require('angular-animate')])
     .directive('addNewContact', addNewContact)
     .directive('contacts', contacts)
     .directive('singleContact', singleContact)
-    .directive('phoneBook', phoneBook);
+    .directive('phoneBook', phoneBook)
+    .directive('addClass', addClass);
 
 
 

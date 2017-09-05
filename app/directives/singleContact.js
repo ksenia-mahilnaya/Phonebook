@@ -1,11 +1,15 @@
 export default function singleContact() {
     return {
-        restrict: 'AE',
-        controller: function($scope) {
-            console.log($scope.isPhoneNumbersVisible);
+        restrict: 'A',
+        controller: function($scope, PhoneBookService) {
+            $scope.removeContact = function(name, phoneNumber) {
+                PhoneBookService.removeContact(name, phoneNumber);
+            };
         },
-        link: function(scope, element){
-
+        scope: {
+            'contact': '=',
+            'removeContact' : '&',
+            'isNumbersVisible': '='
         },
         templateUrl: './templates/single-contact.html'
     };

@@ -1,5 +1,5 @@
 <dt><label for="searchText">Filter contacts</label></dt>
 <dd>
-    <input ng-model="searchText" name="searchText" id="searchText"
-           placeholder="Start typing first letters" />
+    <input ng-model="searchText" ng-change="searchTextHandler(searchText)" name="searchText" id="searchText"
+           placeholder="Start typing first letters"/>
 </dd>
