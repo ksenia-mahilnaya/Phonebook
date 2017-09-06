@@ -40,28 +40,28 @@ export default function PhoneBookService() {
     //localStorage.clear();
 
     const contactsJSON = localStorage.getItem("contacts");
-    this.contacts = contactsJSON ? angular.fromJson(contactsJSON) : contacts;
+    let allContacts = contactsJSON ? angular.fromJson(contactsJSON) : contacts;
 
     this.addContact = function(name, phoneNumber) {
         if (name && phoneNumber) {
-            this.contacts.push({
+            allContacts.push({
                 name: name,
                 phoneNumber: phoneNumber
             });
-            localStorage.setItem('contacts', angular.toJson(this.contacts));
+            localStorage.setItem('contacts', angular.toJson(allContacts));
         }
     };
 
     this.removeContact = function(name, phoneNumber) {
-        const indexContactToRemove = this.contacts.findIndex(
+        const indexContactToRemove = allContacts.findIndex(
             (item) => item.name === name && item.phoneNumber === phoneNumber
         );
-        this.contacts.splice(indexContactToRemove, 1);
-        localStorage.setItem('contacts', angular.toJson(this.contacts));
+        allContacts.splice(indexContactToRemove, 1);
+        localStorage.setItem('contacts', angular.toJson(allContacts));
     };
 
     this.getAll = function() {
-        return this.contacts;
+        return allContacts;
     };
 
 }

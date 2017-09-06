@@ -34168,7 +34168,7 @@ function showPhoneNumbers() {
         },
         templateUrl: './templates/show-phone-numbers.html',
         controller: function controller($scope) {
-            $scope.isNumbersVisible = false;
+            $scope.isNumbersVisible = true;
             $scope.onChange = function () {
                 $scope.showNumbersHandler({ isNumbersVisible: $scope.isNumbersVisible });
             };
@@ -34191,8 +34191,13 @@ function searchText() {
     return {
         restrict: 'E',
         scope: {
-            'searchTextHandler': '&',
-            'searchText': '='
+            'searchTextHandler': '&'
+        },
+        controller: function controller($scope) {
+            $scope.searchText = '';
+            $scope.onChange = function () {
+                $scope.searchTextHandler({ searchText: $scope.searchText });
+            };
         },
         templateUrl: './templates/search-text.html'
     };
@@ -34212,14 +34217,6 @@ exports.default = addNewContact;
 function addNewContact() {
     return {
         restrict: 'E',
-        controller: function controller($scope, PhoneBookService) {
-            $scope.addContact = function (name, phoneNumber) {
-                PhoneBookService.addContact(name, phoneNumber);
-                $scope.contactName = '';
-                $scope.contactPhoneNumber = null;
-            };
-        },
-        scope: {},
         templateUrl: './templates/add-new-contact.html'
     };
 }
@@ -34240,11 +34237,6 @@ function contacts() {
         restrict: 'E',
         controller: function controller($scope, PhoneBookService) {
             $scope.allContacts = PhoneBookService.getAll();
-            $scope.addContact = function (name, phoneNumber) {
-                PhoneBookService.addContact(name, phoneNumber);
-                $scope.contactName = '';
-                $scope.contactPhoneNumber = null;
-            };
         },
         templateUrl: './templates/contacts.html'
     };
@@ -34293,12 +34285,22 @@ exports.default = phoneBook;
 function phoneBook() {
     return {
         restrict: 'E',
-        controller: function controller($scope) {
+        controller: function controller($scope, PhoneBookService) {
+            $scope.addContact = function (name, phoneNumber) {
+                PhoneBookService.addContact(name, phoneNumber);
+                //$scope.contactName = '';
+                //$scope.contactPhoneNumber = null;
+            };
+
             $scope.searchText = '';
             $scope.isNumbersVisible = true;
 
-            $scope.changeNumberVisibility = function (isNumbersVisible) {
+            $scope.changeNumbersVisibility = function (isNumbersVisible) {
                 $scope.isNumbersVisible = !!isNumbersVisible;
+            };
+
+            $scope.filterNames = function (searchText) {
+                $scope.searchText = searchText;
             };
         },
         templateUrl: './templates/phone-book.html'
