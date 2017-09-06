@@ -6,7 +6,7 @@ export default function showPhoneNumbers() {
         },
         templateUrl: './templates/show-phone-numbers.html',
         controller: function ($scope) {
-            $scope.isNumbersVisible = false;
+            $scope.isNumbersVisible = true;
             $scope.onChange = function() {
                 $scope.showNumbersHandler({isNumbersVisible: $scope.isNumbersVisible});
             }

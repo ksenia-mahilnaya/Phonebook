@@ -8,8 +8,7 @@
     <tbody>
     <tr
         ng-repeat="contact in allContacts | orderBy: 'name' | PhoneBookFilter:searchText"
-        add-class contact="contact"
-        is-numbers-visible="isNumbersVisible" single-contact>
+        add-class contact="contact" is-numbers-visible="isNumbersVisible" single-contact>
     </tr>
     </tbody>
 </table>

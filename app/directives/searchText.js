@@ -3,7 +3,12 @@ export default function searchText() {
         restrict: 'E',
         scope: {
             'searchTextHandler': '&',
-            'searchText': '='
+        },
+        controller: function($scope) {
+            $scope.searchText = '';
+            $scope.onChange = function() {
+                $scope.searchTextHandler({searchText: $scope.searchText});
+            };
         },
         templateUrl: './templates/search-text.html',
     };
