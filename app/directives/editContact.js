@@ -1,4 +1,4 @@
-export default function addNewContact() {
+export default function editContact() {
     return {
         restrict: 'E',
         scope: {
@@ -10,8 +10,9 @@ export default function addNewContact() {
                 $scope.contactName = '';
                 $scope.contactPhoneNumber = null;
                 $state.go("home");
+                console.log($scope);
             };
         },
-        templateUrl: './templates/add-new-contact.html'
+        templateUrl: './templates/edit-contact.html'
     };
 }

@@ -56,7 +56,7 @@ header {
     text-transform: uppercase;
 }
 
-main {
+.main {
     width: 433px;
     margin: 40px auto;
     background: $color-main-background;
@@ -145,12 +145,32 @@ td {
     border: 1px solid $color-border;
 }
 
-.remove-contact::after {
-    content: 'x';
+.edit-contact {
     float: right;
-    font-family: $font-bold;
     cursor: pointer;
     margin-right: 5px;
+}
+
+.edit-contact::after {
+    content: '\0078';
+    font-family: $font-bold;
+}
+
+.edit-contact:hover::after,
+.edit-contact:focus::after,
+.edit-contact:hover::after {
+    color: $color-remove-contact-hover;
+}
+
+.remove-contact {
+    float: right;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.remove-contact::after {
+    content: '\270E';
+    font-family: $font-bold;
 }
 
 .remove-contact:hover::after,
@@ -256,3 +276,4 @@ footer {
     font-stretch: normal;
     unicode-range: U+0020-00FE;
 }
+

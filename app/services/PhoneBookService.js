@@ -5,6 +5,7 @@ export default function PhoneBookService() {
         {
             name: 'Ann',
             phoneNumber: '+375(33)4366445'
+
         }, {
             name: 'Max',
             phoneNumber: '+375(29)4562387'
@@ -42,20 +43,30 @@ export default function PhoneBookService() {
     const contactsJSON = localStorage.getItem("contacts");
     let allContacts = contactsJSON ? angular.fromJson(contactsJSON) : contacts;
 
+    this.findContact = function(name, phoneNumber) {
+        const indexOfContact = allContacts.findIndex(
+            (item) => item.name === name && item.phoneNumber === phoneNumber
+        );
+        return indexOfContact;
+    };
+
+    this.rewriteContact
+
     this.addContact = function(name, phoneNumber) {
-        if (name && phoneNumber) {
+        const isExistSuchContact = this.findContact(name, phoneNumber) !== -1;
+        if (name && phoneNumber && (!isExistSuchContact)) {
             allContacts.push({
                 name: name,
                 phoneNumber: phoneNumber
             });
             localStorage.setItem('contacts', angular.toJson(allContacts));
+        } else {
+            console.error('All fields are required || Such contact already exists');
         }
     };
 
     this.removeContact = function(name, phoneNumber) {
-        const indexContactToRemove = allContacts.findIndex(
-            (item) => item.name === name && item.phoneNumber === phoneNumber
-        );
+        const indexContactToRemove = this.findContact(name, phoneNumber);
         allContacts.splice(indexContactToRemove, 1);
         localStorage.setItem('contacts', angular.toJson(allContacts));
     };

@@ -1,12 +1,12 @@
-<main>
+<div class="main">
     <form>
         <fieldset>
             <dl>
                 <show-phone-numbers show-numbers-handler="changeNumbersVisibility(isNumbersVisible)"></show-phone-numbers>
                 <search-text search-text-handler="filterNames(searchText)"></search-text>
-                <add-new-contact add-contact="addContact(name, phoneNumber)"></add-new-contact>
             </dl>
+            <button ui-sref="add">Add contact</button>
         </fieldset>
     </form>
     <contacts is-numbers-visible="isNumbersVisible"></contacts>
-</main>
+</div>
