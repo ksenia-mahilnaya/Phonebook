@@ -5,8 +5,8 @@ export default function singleContact() {
             $scope.onClick = function(name, phoneNumber) {
                 $scope.removeContact({name: name, phoneNumber: phoneNumber});
             };
-            $scope.findContact = function(name, phoneNumber) {
-                return PhoneBookService.findContact(name, phoneNumber);
+            $scope.getContactIndex = function(name, phoneNumber) {
+                return PhoneBookService.getContactIndex(name, phoneNumber);
             };
         },
         scope: {

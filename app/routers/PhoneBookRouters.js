@@ -12,11 +12,6 @@ export default function PhoneBookRouters($stateProvider, $urlRouterProvider) {
         })
         .state('edit', {
             url: '/edit/:id',
-            template: '<phone-book-edit></phone-book-edit>',
-            controller: function($stateParams, $scope) {
-                $scope.func = function() {
-                    return $stateParams.id;
-                };
-            }
+            template: '<phone-book-edit></phone-book-edit>'
         });
 }

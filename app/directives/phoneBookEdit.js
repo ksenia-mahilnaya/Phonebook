@@ -2,8 +2,8 @@ export default function phoneBookEdit() {
     return {
         restrict: 'E',
         controller: function($scope, PhoneBookService) {
-            $scope.addContact = function(name, phoneNumber) {
-                PhoneBookService.addContact(name, phoneNumber);
+            $scope.editContact = function(newName, newPhoneNumber, indexOfContact) {
+                PhoneBookService.editContact(newName, newPhoneNumber, indexOfContact);
             };
         },
         templateUrl: './templates/phone-book-edit.html'

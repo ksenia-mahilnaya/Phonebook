@@ -1,8 +1,11 @@
 <dt><label for="contactName">Edit contact</label></dt>
 <dd>
-    <input ng-model="contactName" placeholder="Name" id="contactName">
-    <input type="tel" ng-model="contactPhoneNumber" placeholder="Phone number">
+    <input ng-model="contactName" id="contactName">
+    <input type="tel" ng-model="contactPhoneNumber">
 </dd>
+<button ui-sref="home">
+    Cancel
+</button>
 <button ng-click="onClick(contactName, contactPhoneNumber)">
-    Edit contact
+    Save
 </button>

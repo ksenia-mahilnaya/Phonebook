@@ -43,17 +43,19 @@ export default function PhoneBookService() {
     const contactsJSON = localStorage.getItem("contacts");
     let allContacts = contactsJSON ? angular.fromJson(contactsJSON) : contacts;
 
-    this.findContact = function(name, phoneNumber) {
+    this.getContactIndex = function(name, phoneNumber) {
         const indexOfContact = allContacts.findIndex(
             (item) => item.name === name && item.phoneNumber === phoneNumber
         );
         return indexOfContact;
     };
 
-    this.rewriteContact
+    this.getContact = function(indexOfContact) {
+        return allContacts[indexOfContact];
+    };
 
     this.addContact = function(name, phoneNumber) {
-        const isExistSuchContact = this.findContact(name, phoneNumber) !== -1;
+        const isExistSuchContact = this.getContactIndex(name, phoneNumber) !== -1;
         if (name && phoneNumber && (!isExistSuchContact)) {
             allContacts.push({
                 name: name,
@@ -66,8 +68,14 @@ export default function PhoneBookService() {
     };
 
     this.removeContact = function(name, phoneNumber) {
-        const indexContactToRemove = this.findContact(name, phoneNumber);
+        const indexContactToRemove = this.getContactIndex(name, phoneNumber);
         allContacts.splice(indexContactToRemove, 1);
+        localStorage.setItem('contacts', angular.toJson(allContacts));
+    };
+
+    this.editContact = function(newName, newPhoneNumber, indexOfContact) {
+        allContacts[indexOfContact].name = newName;
+        allContacts[indexOfContact].phoneNumber = newPhoneNumber;
         localStorage.setItem('contacts', angular.toJson(allContacts));
     };
 

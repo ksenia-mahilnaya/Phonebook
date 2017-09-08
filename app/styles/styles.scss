@@ -38,57 +38,147 @@ body {
     background: $color-body-background;
     font-family: $font-book;
     color: $color-body-text;
+    .wrapper {
+        padding-bottom: 70px;
+        header {
+            width: 100%;
+            height: 63px;
+            background: $color-base;
+            color: $color-white;
+            font-family: $font-medium;
+            font-size: 17px;
+            line-height: 63px;
+            text-align:  center;
+            text-transform: uppercase;
+            h1 {
+                cursor: pointer;
+            }
+        }
+        .main {
+            width: 435px;
+            margin: 40px auto;
+            background: $color-main-background;
+            .form-bottom-border {
+                border-bottom: 1px solid $color-form-border;
+            }
+            form {
+                padding: 10px;
+                border-top: 1px solid $color-form-border;
+                border-right: 1px solid $color-form-border;
+                border-left: 1px solid $color-form-border;
+                dl{
+                    padding-top: 10px;
+                    .show-phone-numbers {
+                        display: inline-block;
+                    }
+                    dt, dd {
+                        margin-bottom: 9px;
+                        input {
+                            padding: 7px 7px;
+                            border-radius: 3px;
+                            border: 1px solid $color-placeholders;
+                        }
+                        input#searchText {
+                            width: 397px;
+                        }
+                    }
+                    button {
+                        margin-left: 5px;
+                        padding: 9px 12px;
+                        border-radius: 3px;
+                        background: $color-highlight-with-blue;
+                        color: $color-font-light;
+                        text-transform: uppercase;
+                        font-size: 14px;
+                        float: right;
+                        cursor: pointer;
+                        &:hover,
+                        &:focus,
+                        &:active {
+                            background: $color-remove-contact-hover;
+                        }
+                    }
+                }
+            }
+            table {
+                width: 100%;
+                border-spacing: 0;
+                border-collapse: collapse;
+                .highlight-with-red {
+                    background: $color-highlight-with-red;
+                    color: $color-font-light;
+                }
+
+                .highlight-with-blue {
+                    background: $color-highlight-with-blue;
+                    color: $color-font-light;
+                }
+                .contact-name,
+                .contact-phone-number {
+                    width: 50%;
+                }
+                td {
+                    padding: 5px;
+                    border: 1px solid $color-border;
+                    .is-phone-numbers-visible {
+                        opacity: 1;
+                    }
+                    .edit-contact {
+                        float: right;
+                        cursor: pointer;
+                        margin-right: 5px;
+                        &::after {
+                            content: '\0078';
+                            font-family: $font-bold;
+                        }
+                        &:hover::after,
+                        &:focus::after,
+                        &:hover::after {
+                            color: $color-remove-contact-hover;
+                        }
+                    }
+                    .remove-contact {
+                        float: right;
+                        cursor: pointer;
+                        margin-right: 5px;
+                        &::after {
+                            content: '\270E';
+                            font-family: $font-bold;
+                        }
+                        &:hover::after,
+                        &:focus::after,
+                        &:hover::after {
+                            color: $color-remove-contact-hover;
+                        }
+                    }
+                }
+            }
+
+        }
+
+    }
+    footer {
+        position: absolute;
+        left:0;
+        bottom:0;
+        height: 70px;
+        width: 100%;
+        background: $color-footer-background;
+        font-family: $font-book;
+        font-size: 14px;
+        line-height: 63px;
+        color: $color-white;
+        text-align:  center;
+    }
 }
 
-.wrapper {
-    padding-bottom: 70px;
+.animate-show-hide.ng-hide {
+    opacity: 0;
 }
 
-header {
-    width: 100%;
-    height: 63px;
-    background: $color-base;
-    color: $color-white;
-    font-family: $font-medium;
-    font-size: 17px;
-    line-height: 63px;
-    text-align:  center;
-    text-transform: uppercase;
-}
-
-.main {
-    width: 433px;
-    margin: 40px auto;
-    background: $color-main-background;
-}
-
-form {
-    padding: 10px;
-    border-top: 1px solid $color-form-border;
-    border-right: 1px solid $color-form-border;
-    border-left: 1px solid $color-form-border;
-}
-
-.show-phone-numbers {
-    display: inline-block;
-}
-
-dl{
-   padding-top: 10px;
-}
-
-dt, dd {
-    margin-bottom: 9px;
-}
-
-input {
-    padding: 7px 7px;
-    border-radius: 3px;
-    border: 1px solid $color-placeholders;
-}
-
-input#searchText {
-    width: 397px;
+.animate-show-hide.ng-hide-add,
+.animate-show-hide.ng-hide-remove {
+    transition: all linear 0.8s;
 }
 
 ::-webkit-input-placeholder {
@@ -115,113 +205,6 @@ input#searchText {
     font-family: $font-light;
     font-size: 14px;
     color: $color-placeholders;
-}
-
-button {
-    padding: 9px 12px;
-    border-radius: 3px;
-    background: $color-highlight-with-blue;
-    color: $color-font-light;
-    text-transform: uppercase;
-    font-size: 14px;
-    float: right;
-    cursor: pointer;
-}
-
-button:hover,
-button:focus,
-button:active {
-    background: $color-remove-contact-hover;
-}
-
-table {
-    width: 100%;
-    border-spacing: 0;
-    border-collapse: collapse;
-}
-
-td {
-    padding: 5px;
-    border: 1px solid $color-border;
-}
-
-.edit-contact {
-    float: right;
-    cursor: pointer;
-    margin-right: 5px;
-}
-
-.edit-contact::after {
-    content: '\0078';
-    font-family: $font-bold;
-}
-
-.edit-contact:hover::after,
-.edit-contact:focus::after,
-.edit-contact:hover::after {
-    color: $color-remove-contact-hover;
-}
-
-.remove-contact {
-    float: right;
-    cursor: pointer;
-    margin-right: 5px;
-}
-
-.remove-contact::after {
-    content: '\270E';
-    font-family: $font-bold;
-}
-
-.remove-contact:hover::after,
-.remove-contact:focus::after,
-.remove-contact:hover::after {
-    color: $color-remove-contact-hover;
-}
-
-.contact-name {
-     width: 50%;
- }
-
-.contact-phone-number {
-    width: 50%;
-}
-
-.highlight-with-red {
-    background: $color-highlight-with-red;
-    color: $color-font-light;
-}
-
-.highlight-with-blue {
-    background: $color-highlight-with-blue;
-    color: $color-font-light;
-}
-
-.animate-show-hide.ng-hide {
-    opacity: 0;
-}
-
-.animate-show-hide.ng-hide-add,
-.animate-show-hide.ng-hide-remove {
-    transition: all linear 0.8s;
-}
-
-.is-phone-numbers-visible {
-    opacity: 1;
-}
-
-footer {
-    position: absolute;
-    left:0;
-    bottom:0;
-    height: 70px;
-    width: 100%;
-    background: $color-footer-background;
-    font-family: $font-book;
-    font-size: 14px;
-    line-height: 63px;
-    color: $color-white;
-    text-align:  center;
 }
 
 /*****FONTS********/
@@ -276,4 +259,3 @@ footer {
     font-stretch: normal;
     unicode-range: U+0020-00FE;
 }
-

@@ -60,14 +60,14 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(7);
+__webpack_require__(6);
 module.exports = angular;
 
 
@@ -99,12 +99,6 @@ module.exports = __webpack_require__.p + "fonts/Gotham-Medium.eot";
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "fonts/fontawesome-webfont.eot";
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
@@ -112,29 +106,33 @@ var _angular = __webpack_require__(0);
 
 var _angular2 = _interopRequireDefault(_angular);
 
-var _angularjs = __webpack_require__(8);
+var _angularjs = __webpack_require__(7);
 
 var _angularjs2 = _interopRequireDefault(_angularjs);
 
-var _PhoneBookService = __webpack_require__(10);
+var _PhoneBookService = __webpack_require__(9);
 
 var _PhoneBookService2 = _interopRequireDefault(_PhoneBookService);
 
-var _PhoneBookFilter = __webpack_require__(11);
+var _PhoneBookFilter = __webpack_require__(10);
 
 var _PhoneBookFilter2 = _interopRequireDefault(_PhoneBookFilter);
 
-var _showPhoneNumbers = __webpack_require__(12);
+var _showPhoneNumbers = __webpack_require__(11);
 
 var _showPhoneNumbers2 = _interopRequireDefault(_showPhoneNumbers);
 
-var _searchText = __webpack_require__(13);
+var _searchText = __webpack_require__(12);
 
 var _searchText2 = _interopRequireDefault(_searchText);
 
-var _addNewContact = __webpack_require__(14);
+var _addNewContact = __webpack_require__(13);
 
 var _addNewContact2 = _interopRequireDefault(_addNewContact);
+
+var _editContact = __webpack_require__(14);
+
+var _editContact2 = _interopRequireDefault(_editContact);
 
 var _contacts = __webpack_require__(15);
 
@@ -168,10 +166,10 @@ __webpack_require__(22);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_angular2.default.module('app', [__webpack_require__(42), _angularjs2.default]).service('PhoneBookService', _PhoneBookService2.default).filter('PhoneBookFilter', _PhoneBookFilter2.default).directive('showPhoneNumbers', _showPhoneNumbers2.default).directive('searchText', _searchText2.default).directive('addNewContact', _addNewContact2.default).directive('contacts', _contacts2.default).directive('singleContact', _singleContact2.default).directive('phoneBook', _phoneBook2.default).directive('phoneBookAdd', _phoneBookAdd2.default).directive('phoneBookEdit', _phoneBookEdit2.default).directive('addClass', _addClass2.default).config(_PhoneBookRouters2.default);
+_angular2.default.module('app', [__webpack_require__(39), _angularjs2.default]).service('PhoneBookService', _PhoneBookService2.default).filter('PhoneBookFilter', _PhoneBookFilter2.default).directive('showPhoneNumbers', _showPhoneNumbers2.default).directive('searchText', _searchText2.default).directive('addNewContact', _addNewContact2.default).directive('editContact', _editContact2.default).directive('contacts', _contacts2.default).directive('singleContact', _singleContact2.default).directive('phoneBook', _phoneBook2.default).directive('phoneBookAdd', _phoneBookAdd2.default).directive('phoneBookEdit', _phoneBookEdit2.default).directive('addClass', _addClass2.default).config(_PhoneBookRouters2.default);
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports) {
 
 /**
@@ -34065,7 +34063,7 @@ $provide.value("$locale", {
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -34076,7 +34074,7 @@ $provide.value("$locale", {
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
 (function (global, factory) {
-     true ? factory(exports, __webpack_require__(0), __webpack_require__(9)) :
+     true ? factory(exports, __webpack_require__(0), __webpack_require__(8)) :
     typeof define === 'function' && define.amd ? define(['exports', 'angular', '@uirouter/core'], factory) :
     (factory((global['@uirouter/angularjs'] = global['@uirouter/angularjs'] || {}),global.angular,global['@uirouter/core']));
 }(this, (function (exports,ng_from_import,_uirouter_core) { 'use strict';
@@ -36084,7 +36082,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -43943,7 +43941,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43964,6 +43962,7 @@ function PhoneBookService() {
     var contacts = [{
         name: 'Ann',
         phoneNumber: '+375(33)4366445'
+
     }, {
         name: 'Max',
         phoneNumber: '+375(29)4562387'
@@ -44001,31 +44000,39 @@ function PhoneBookService() {
     var contactsJSON = localStorage.getItem("contacts");
     var allContacts = contactsJSON ? _angular2.default.fromJson(contactsJSON) : contacts;
 
-    this.addContact = function (name, phoneNumber) {
-        if (name && phoneNumber) {
-            allContacts.push({
-                name: name,
-                phoneNumber: phoneNumber
-            });
-            localStorage.setItem('contacts', _angular2.default.toJson(allContacts));
-        }
+    this.getContactIndex = function (name, phoneNumber) {
+        var indexOfContact = allContacts.findIndex(function (item) {
+            return item.name === name && item.phoneNumber === phoneNumber;
+        });
+        return indexOfContact;
     };
 
-    this.editContact = function (name, phoneNumber) {
-        if (name && phoneNumber) {
+    this.getContact = function (indexOfContact) {
+        return allContacts[indexOfContact];
+    };
+
+    this.addContact = function (name, phoneNumber) {
+        var isExistSuchContact = this.getContactIndex(name, phoneNumber) !== -1;
+        if (name && phoneNumber && !isExistSuchContact) {
             allContacts.push({
                 name: name,
                 phoneNumber: phoneNumber
             });
             localStorage.setItem('contacts', _angular2.default.toJson(allContacts));
+        } else {
+            console.error('All fields are required || Such contact already exists');
         }
     };
 
     this.removeContact = function (name, phoneNumber) {
-        var indexContactToRemove = allContacts.findIndex(function (item) {
-            return item.name === name && item.phoneNumber === phoneNumber;
-        });
+        var indexContactToRemove = this.getContactIndex(name, phoneNumber);
         allContacts.splice(indexContactToRemove, 1);
+        localStorage.setItem('contacts', _angular2.default.toJson(allContacts));
+    };
+
+    this.editContact = function (newName, newPhoneNumber, indexOfContact) {
+        allContacts[indexOfContact].name = newName;
+        allContacts[indexOfContact].phoneNumber = newPhoneNumber;
         localStorage.setItem('contacts', _angular2.default.toJson(allContacts));
     };
 
@@ -44035,7 +44042,7 @@ function PhoneBookService() {
 }
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44060,7 +44067,7 @@ function PhoneBookFilter() {
 }
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44087,7 +44094,7 @@ function showPhoneNumbers() {
 }
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44114,7 +44121,7 @@ function searchText() {
 }
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44139,6 +44146,40 @@ function addNewContact() {
             };
         },
         templateUrl: './templates/add-new-contact.html'
+    };
+}
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = editContact;
+function editContact() {
+    return {
+        restrict: 'E',
+        scope: {
+            editContact: '&'
+        },
+        controller: function controller($scope, $state, $stateParams, PhoneBookService) {
+            $scope.getContact = function (indexOfContact) {
+                return PhoneBookService.getContact(indexOfContact);
+            };
+
+            $scope.contactName = $scope.getContact(+$stateParams.id).name;
+            $scope.contactPhoneNumber = $scope.getContact(+$stateParams.id).phoneNumber;
+
+            $scope.onClick = function (newName, newPhoneNumber) {
+                $scope.editContact({ newName: newName, newPhoneNumber: newPhoneNumber, indexOfContact: +$stateParams.id });
+                $state.go("home");
+            };
+        },
+        templateUrl: './templates/edit-contact.html'
     };
 }
 
@@ -44177,9 +44218,12 @@ exports.default = singleContact;
 function singleContact() {
     return {
         restrict: 'A',
-        controller: function controller($scope) {
+        controller: function controller($scope, PhoneBookService) {
             $scope.onClick = function (name, phoneNumber) {
                 $scope.removeContact({ name: name, phoneNumber: phoneNumber });
+            };
+            $scope.getContactIndex = function (name, phoneNumber) {
+                return PhoneBookService.getContactIndex(name, phoneNumber);
             };
         },
         scope: {
@@ -44206,6 +44250,10 @@ function phoneBook() {
     return {
         restrict: 'E',
         controller: function controller($scope, PhoneBookService) {
+
+            $scope.searchText = '';
+            $scope.isNumbersVisible = true;
+
             $scope.addContact = function (name, phoneNumber) {
                 PhoneBookService.addContact(name, phoneNumber);
             };
@@ -44213,9 +44261,6 @@ function phoneBook() {
             $scope.removeContact = function (name, phoneNumber) {
                 PhoneBookService.removeContact(name, phoneNumber);
             };
-
-            $scope.searchText = '';
-            $scope.isNumbersVisible = true;
 
             $scope.changeNumbersVisibility = function (isNumbersVisible) {
                 $scope.isNumbersVisible = !!isNumbersVisible;
@@ -44267,8 +44312,8 @@ function phoneBookEdit() {
     return {
         restrict: 'E',
         controller: function controller($scope, PhoneBookService) {
-            $scope.addContact = function (name, phoneNumber) {
-                PhoneBookService.addContact(name, phoneNumber);
+            $scope.editContact = function (newName, newPhoneNumber, indexOfContact) {
+                PhoneBookService.editContact(newName, newPhoneNumber, indexOfContact);
             };
         },
         templateUrl: './templates/phone-book-edit.html'
@@ -44320,7 +44365,7 @@ function PhoneBookRouters($stateProvider, $urlRouterProvider) {
         url: '/add',
         template: '<phone-book-add></phone-book-add>'
     }).state('edit', {
-        url: '/edit',
+        url: '/edit/:id',
         template: '<phone-book-edit></phone-book-edit>'
     });
 }
@@ -44340,7 +44385,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(40)(content, options);
+var update = __webpack_require__(37)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -44365,7 +44410,7 @@ exports = module.exports = __webpack_require__(24)(undefined);
 
 
 // module
-exports.push([module.i, "* {\n  font-family: inherit;\n  font-size: 100%;\n  font-weight: inherit;\n  font-style: inherit;\n  margin: 0;\n  padding: 0;\n  vertical-align: baseline;\n  border: 0 none; }\n\nhtml {\n  height: 100%; }\n\nbody {\n  min-height: 100%;\n  position: relative;\n  background: #d8d8d8;\n  font-family: \"Gotham Book\";\n  color: #666; }\n\n.wrapper {\n  padding-bottom: 70px; }\n\nheader {\n  width: 100%;\n  height: 63px;\n  background: #464c59;\n  color: #fff;\n  font-family: \"Gotham Medium\";\n  font-size: 17px;\n  line-height: 63px;\n  text-align: center;\n  text-transform: uppercase; }\n\n.main {\n  width: 433px;\n  margin: 40px auto;\n  background: #f4f4f4; }\n\nform {\n  padding: 10px;\n  border-top: 1px solid #2a2d34;\n  border-right: 1px solid #2a2d34;\n  border-left: 1px solid #2a2d34; }\n\n.show-phone-numbers {\n  display: inline-block; }\n\ndl {\n  padding-top: 10px; }\n\ndt, dd {\n  margin-bottom: 9px; }\n\ninput {\n  padding: 7px 7px;\n  border-radius: 3px;\n  border: 1px solid #b4b4b4; }\n\ninput#searchText {\n  width: 397px; }\n\n::-webkit-input-placeholder {\n  font-family: \"Gotham Light\";\n  font-size: 14px;\n  color: #b4b4b4; }\n\n/* Firefox 19+ */\n::-moz-placeholder {\n  font-family: \"Gotham Light\";\n  font-size: 14px;\n  color: #b4b4b4; }\n\n/* Firefox 18- */\n:-moz-placeholder {\n  font-family: \"Gotham Light\";\n  font-size: 14px;\n  color: #b4b4b4; }\n\n:-ms-input-placeholder {\n  font-family: \"Gotham Light\";\n  font-size: 14px;\n  color: #b4b4b4; }\n\nbutton {\n  padding: 9px 12px;\n  border-radius: 3px;\n  background: #505766;\n  color: #e5e5e5;\n  text-transform: uppercase;\n  font-size: 14px;\n  float: right;\n  cursor: pointer; }\n\nbutton:hover,\nbutton:focus,\nbutton:active {\n  background: #373c46; }\n\ntable {\n  width: 100%;\n  border-spacing: 0;\n  border-collapse: collapse; }\n\ntd {\n  padding: 5px;\n  border: 1px solid #2a2d34; }\n\n.edit-contact {\n  float: right;\n  cursor: pointer;\n  margin-right: 5px; }\n\n.edit-contact::after {\n  content: '\\F14B';\n  font-family: 'Font Awesome';\n  font-size: 16px; }\n\n.edit-contact:hover::after,\n.edit-contact:focus::after,\n.edit-contact:hover::after {\n  color: #373c46; }\n\n.remove-contact {\n  float: right;\n  cursor: pointer;\n  margin-right: 5px; }\n\n.remove-contact::after {\n  content: '\\270E';\n  font-family: \"Gotham Bold\"; }\n\n.remove-contact:hover::after,\n.remove-contact:focus::after,\n.remove-contact:hover::after {\n  color: #373c46; }\n\n.contact-name {\n  width: 50%; }\n\n.contact-phone-number {\n  width: 50%; }\n\n.highlight-with-red {\n  background: #dc6362;\n  color: #e5e5e5; }\n\n.highlight-with-blue {\n  background: #505766;\n  color: #e5e5e5; }\n\n.animate-show-hide.ng-hide {\n  opacity: 0; }\n\n.animate-show-hide.ng-hide-add,\n.animate-show-hide.ng-hide-remove {\n  transition: all linear 0.8s; }\n\n.is-phone-numbers-visible {\n  opacity: 1; }\n\nfooter {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  height: 70px;\n  width: 100%;\n  background: #363a44;\n  font-family: \"Gotham Book\";\n  font-size: 14px;\n  line-height: 63px;\n  color: #fff;\n  text-align: center; }\n\n/*****FONTS********/\n@font-face {\n  font-family: 'Gotham Bold';\n  src: url(\"" + __webpack_require__(1) + "\");\n  src: url(\"" + __webpack_require__(1) + "?#iefix\") format(\"embedded-opentype\"), url(\"" + __webpack_require__(25) + "\") format(\"woff2\"), url(\"" + __webpack_require__(26) + "\") format(\"woff\"), url(\"" + __webpack_require__(27) + "#Gotham Bold\") format(\"svg\");\n  font-weight: 700;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Book';\n  src: url(" + __webpack_require__(2) + ");\n  src: url(" + __webpack_require__(2) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(28) + ") format(\"woff2\"), url(" + __webpack_require__(29) + ") format(\"woff\"), url(" + __webpack_require__(30) + "#Gotham-Book) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Light';\n  src: url(" + __webpack_require__(3) + ");\n  src: url(" + __webpack_require__(3) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(31) + ") format(\"woff2\"), url(" + __webpack_require__(32) + ") format(\"woff\"), url(" + __webpack_require__(33) + "#Gotham-Light) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Medium';\n  src: url(" + __webpack_require__(4) + ");\n  src: url(" + __webpack_require__(4) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(34) + ") format(\"woff2\"), url(" + __webpack_require__(35) + ") format(\"woff\"), url(" + __webpack_require__(36) + "#Gotham-Medium) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Font Awesome';\n  src: url(" + __webpack_require__(5) + ");\n  src: url(" + __webpack_require__(5) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(37) + ") format(\"woff2\"), url(" + __webpack_require__(38) + ") format(\"woff\"), url(" + __webpack_require__(39) + "#fontawesome-webfont) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n", ""]);
+exports.push([module.i, "* {\n  font-family: inherit;\n  font-size: 100%;\n  font-weight: inherit;\n  font-style: inherit;\n  margin: 0;\n  padding: 0;\n  vertical-align: baseline;\n  border: 0 none; }\n\nhtml {\n  height: 100%; }\n\nbody {\n  min-height: 100%;\n  position: relative;\n  background: #d8d8d8;\n  font-family: \"Gotham Book\";\n  color: #666; }\n  body .wrapper {\n    padding-bottom: 70px; }\n    body .wrapper header {\n      width: 100%;\n      height: 63px;\n      background: #464c59;\n      color: #fff;\n      font-family: \"Gotham Medium\";\n      font-size: 17px;\n      line-height: 63px;\n      text-align: center;\n      text-transform: uppercase; }\n      body .wrapper header h1 {\n        cursor: pointer; }\n    body .wrapper .main {\n      width: 435px;\n      margin: 40px auto;\n      background: #f4f4f4; }\n      body .wrapper .main form {\n        padding: 10px;\n        border-top: 1px solid #2a2d34;\n        border-right: 1px solid #2a2d34;\n        border-left: 1px solid #2a2d34; }\n        body .wrapper .main form dl {\n          padding-top: 10px; }\n          body .wrapper .main form dl dt, body .wrapper .main form dl dd {\n            margin-bottom: 9px; }\n            body .wrapper .main form dl dt input, body .wrapper .main form dl dd input {\n              padding: 7px 7px;\n              border-radius: 3px;\n              border: 1px solid #b4b4b4; }\n            body .wrapper .main form dl dt input#searchText, body .wrapper .main form dl dd input#searchText {\n              width: 397px; }\n\n.form-bottom-border {\n  border-bottom: 1px solid #2a2d34; }\n\n.show-phone-numbers {\n  display: inline-block; }\n\n::-webkit-input-placeholder {\n  font-family: \"Gotham Light\";\n  font-size: 14px;\n  color: #b4b4b4; }\n\n/* Firefox 19+ */\n::-moz-placeholder {\n  font-family: \"Gotham Light\";\n  font-size: 14px;\n  color: #b4b4b4; }\n\n/* Firefox 18- */\n:-moz-placeholder {\n  font-family: \"Gotham Light\";\n  font-size: 14px;\n  color: #b4b4b4; }\n\n:-ms-input-placeholder {\n  font-family: \"Gotham Light\";\n  font-size: 14px;\n  color: #b4b4b4; }\n\nbutton {\n  margin-left: 5px;\n  padding: 9px 12px;\n  border-radius: 3px;\n  background: #505766;\n  color: #e5e5e5;\n  text-transform: uppercase;\n  font-size: 14px;\n  float: right;\n  cursor: pointer; }\n\nbutton:hover,\nbutton:focus,\nbutton:active {\n  background: #373c46; }\n\ntable {\n  width: 100%;\n  border-spacing: 0;\n  border-collapse: collapse; }\n\ntd {\n  padding: 5px;\n  border: 1px solid #2a2d34; }\n\n.edit-contact {\n  float: right;\n  cursor: pointer;\n  margin-right: 5px; }\n\n.edit-contact::after {\n  content: 'x';\n  font-family: \"Gotham Bold\"; }\n\n.edit-contact:hover::after,\n.edit-contact:focus::after,\n.edit-contact:hover::after {\n  color: #373c46; }\n\n.remove-contact {\n  float: right;\n  cursor: pointer;\n  margin-right: 5px; }\n\n.remove-contact::after {\n  content: '\\270E';\n  font-family: \"Gotham Bold\"; }\n\n.remove-contact:hover::after,\n.remove-contact:focus::after,\n.remove-contact:hover::after {\n  color: #373c46; }\n\n.contact-name {\n  width: 50%; }\n\n.contact-phone-number {\n  width: 50%; }\n\n.highlight-with-red {\n  background: #dc6362;\n  color: #e5e5e5; }\n\n.highlight-with-blue {\n  background: #505766;\n  color: #e5e5e5; }\n\n.animate-show-hide.ng-hide {\n  opacity: 0; }\n\n.animate-show-hide.ng-hide-add,\n.animate-show-hide.ng-hide-remove {\n  transition: all linear 0.8s; }\n\n.is-phone-numbers-visible {\n  opacity: 1; }\n\nfooter {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  height: 70px;\n  width: 100%;\n  background: #363a44;\n  font-family: \"Gotham Book\";\n  font-size: 14px;\n  line-height: 63px;\n  color: #fff;\n  text-align: center; }\n\n/*****FONTS********/\n@font-face {\n  font-family: 'Gotham Bold';\n  src: url(\"" + __webpack_require__(1) + "\");\n  src: url(\"" + __webpack_require__(1) + "?#iefix\") format(\"embedded-opentype\"), url(\"" + __webpack_require__(25) + "\") format(\"woff2\"), url(\"" + __webpack_require__(26) + "\") format(\"woff\"), url(\"" + __webpack_require__(27) + "#Gotham Bold\") format(\"svg\");\n  font-weight: 700;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Book';\n  src: url(" + __webpack_require__(2) + ");\n  src: url(" + __webpack_require__(2) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(28) + ") format(\"woff2\"), url(" + __webpack_require__(29) + ") format(\"woff\"), url(" + __webpack_require__(30) + "#Gotham-Book) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Light';\n  src: url(" + __webpack_require__(3) + ");\n  src: url(" + __webpack_require__(3) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(31) + ") format(\"woff2\"), url(" + __webpack_require__(32) + ") format(\"woff\"), url(" + __webpack_require__(33) + "#Gotham-Light) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Medium';\n  src: url(" + __webpack_require__(4) + ");\n  src: url(" + __webpack_require__(4) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(34) + ") format(\"woff2\"), url(" + __webpack_require__(35) + ") format(\"woff\"), url(" + __webpack_require__(36) + "#Gotham-Medium) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n", ""]);
 
 // exports
 
@@ -44528,24 +44573,6 @@ module.exports = __webpack_require__.p + "fonts/Gotham-Medium.svg";
 /* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "fonts/fontawesome-webfont.woff2";
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "fonts/fontawesome-webfont.woff";
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "fonts/fontawesome-webfont.svg";
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -44589,7 +44616,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(41);
+var	fixUrls = __webpack_require__(38);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -44902,7 +44929,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 41 */
+/* 38 */
 /***/ (function(module, exports) {
 
 
@@ -44997,15 +45024,15 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 42 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(43);
+__webpack_require__(40);
 module.exports = 'ngAnimate';
 
 
 /***/ }),
-/* 43 */
+/* 40 */
 /***/ (function(module, exports) {
 
 /**
