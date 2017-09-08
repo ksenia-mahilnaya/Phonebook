@@ -13,7 +13,7 @@ import phoneBook from './app/directives/phoneBook';
 import phoneBookAdd from './app/directives/phoneBookAdd';
 import phoneBookEdit from './app/directives/phoneBookEdit';
 import addClass from './app/directives/addClass';
-import PhoneBookRouters from './app/routers/PhoneBookRouters';
+import PhoneBookRouter from './app/routers/PhoneBookRouter';
 
 import './app/styles/styles.scss';
 
@@ -30,4 +30,4 @@ angular.module('app', [require('angular-animate'), uiRouter])
     .directive('phoneBookAdd', phoneBookAdd)
     .directive('phoneBookEdit', phoneBookEdit)
     .directive('addClass', addClass)
-    .config(PhoneBookRouters);
+    .config(PhoneBookRouter);

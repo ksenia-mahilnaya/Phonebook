@@ -1,4 +1,4 @@
-export default function PhoneBookRouters($stateProvider, $urlRouterProvider) {
+export default function PhoneBookRouter($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
