@@ -2,7 +2,6 @@ export default function phoneBook() {
     return {
         restrict: 'E',
         controller: function($scope, PhoneBookService) {
-
             $scope.searchText = '';
             $scope.isNumbersVisible = true;
 

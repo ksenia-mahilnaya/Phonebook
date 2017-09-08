@@ -1,5 +1,5 @@
 <div class="main">
-    <form>
+    <form novalidate>
         <fieldset>
             <dl>
                 <show-phone-numbers show-numbers-handler="changeNumbersVisibility(isNumbersVisible)"></show-phone-numbers>
@@ -8,5 +8,5 @@
             </dl>
         </fieldset>
     </form>
-    <contacts is-numbers-visible="isNumbersVisible"></contacts>
+    <contacts search-text="searchText" is-numbers-visible="isNumbersVisible"></contacts>
 </div>

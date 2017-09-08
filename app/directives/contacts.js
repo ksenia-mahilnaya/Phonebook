@@ -4,6 +4,10 @@ export default function contacts() {
         controller: function($scope, PhoneBookService) {
             $scope.allContacts = PhoneBookService.getAll();
         },
+        scope: {
+            'isNumbersVisible': '=',
+            'searchText': '='
+        },
         templateUrl: './templates/contacts.html'
     };
 }
