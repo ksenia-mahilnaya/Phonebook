@@ -4,11 +4,12 @@
             <dt><label for="contactName">Add new contact</label></dt>
             <dd>
                 <input type="text" ng-model="contactName" name="contactName" placeholder="Name" id="contactName"
-                       ng-maxlength="15" ng-minlength="3" required>
+                       ng-maxlength="15" ng-minlength="3" required ng-pattern="/^[a-zA-Z]+$/">
                 <div class="error" ng-messages="addContactForm.contactName.$error" role="alert">
                     <p ng-message="required">You did not enter a field</p>
                     <p ng-message="minlength">Your field is too short</p>
                     <p ng-message="maxlength">Your field is too long</p>
+                    <p ng-message="pattern">Only latin letters allowed</p>
                 </div>
             </dd>
             <dd>

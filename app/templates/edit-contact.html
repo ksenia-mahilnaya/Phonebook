@@ -3,11 +3,13 @@
         <dl>
             <dt><label for="contactName">Edit contact</label></dt>
             <dd>
-                <input ng-model="contactName" id="contactName" name="contactName" ng-minlength="3" ng-maxlength="15" required>
+                <input ng-model="contactName" id="contactName" name="contactName" ng-minlength="3" ng-maxlength="15"
+                       ng-pattern="/^[a-zA-Z]+$/" required>
                 <div class="error" ng-messages="editContactForm.contactName.$error" role="alert">
                     <p ng-message="required">You did not enter a field</p>
                     <p ng-message="minlength">Your field is too short</p>
                     <p ng-message="maxlength">Your field is too long</p>
+                    <p ng-message="pattern">Only latin letters allowed</p>
                 </div>
             </dd>
             <dd>
