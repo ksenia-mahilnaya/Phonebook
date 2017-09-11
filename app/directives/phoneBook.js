@@ -1,16 +1,16 @@
 export default function phoneBook() {
     return {
         restrict: 'E',
-        controller: function($scope, PhoneBookService) {
+        controller: function($scope, phoneBookService) {
             $scope.searchText = '';
             $scope.isNumbersVisible = true;
 
             $scope.addContact = function(name, phoneNumber) {
-                PhoneBookService.addContact(name, phoneNumber);
+                phoneBookService.addContact(name, phoneNumber);
             };
 
             $scope.removeContact = function(name, phoneNumber) {
-                PhoneBookService.removeContact(name, phoneNumber);
+                phoneBookService.removeContact(name, phoneNumber);
             };
 
             $scope.changeNumbersVisibility = function(isNumbersVisible) {

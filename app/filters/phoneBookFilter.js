@@ -1,4 +1,4 @@
-export default function PhoneBookFilter() {
+export default function phoneBookFilter() {
     return function (items, searchText) {
         const filtered = [];
         const textMatch = new RegExp(searchText, 'i');

@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-export default function PhoneBookService() {
+export default function phoneBookService() {
     const contacts = [
         {
             name: 'Ann',

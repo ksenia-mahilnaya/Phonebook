@@ -4,12 +4,12 @@ export default function showPhoneNumbers() {
         scope: {
             'showNumbersHandler': '&'
         },
-        templateUrl: './templates/show-phone-numbers.html',
         controller: function ($scope) {
             $scope.isNumbersVisible = true;
             $scope.onChange = function() {
                 $scope.showNumbersHandler({isNumbersVisible: $scope.isNumbersVisible});
             }
-        }
+        },
+        templateUrl: './templates/show-phone-numbers.html'
     };
 }

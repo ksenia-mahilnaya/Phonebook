@@ -7,7 +7,7 @@
     </thead>
     <tbody>
     <tr
-        ng-repeat="contact in allContacts | orderBy: 'name' | PhoneBookFilter:searchText"
+        ng-repeat="contact in allContacts | orderBy: 'name' | phoneBookFilter:searchText"
         add-class remove-contact="removeContact(name, phoneNumber)" contact="contact" is-numbers-visible="isNumbersVisible" single-contact>
     </tr>
     </tbody>

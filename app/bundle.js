@@ -158,15 +158,15 @@ var _addClass = __webpack_require__(20);
 
 var _addClass2 = _interopRequireDefault(_addClass);
 
-var _PhoneBookRouters = __webpack_require__(21);
+var _PhoneBookRouter = __webpack_require__(21);
 
-var _PhoneBookRouters2 = _interopRequireDefault(_PhoneBookRouters);
+var _PhoneBookRouter2 = _interopRequireDefault(_PhoneBookRouter);
 
 __webpack_require__(22);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_angular2.default.module('app', [__webpack_require__(39), _angularjs2.default]).service('PhoneBookService', _PhoneBookService2.default).filter('PhoneBookFilter', _PhoneBookFilter2.default).directive('showPhoneNumbers', _showPhoneNumbers2.default).directive('searchText', _searchText2.default).directive('addNewContact', _addNewContact2.default).directive('editContact', _editContact2.default).directive('contacts', _contacts2.default).directive('singleContact', _singleContact2.default).directive('phoneBook', _phoneBook2.default).directive('phoneBookAdd', _phoneBookAdd2.default).directive('phoneBookEdit', _phoneBookEdit2.default).directive('addClass', _addClass2.default).config(_PhoneBookRouters2.default);
+_angular2.default.module('app', [__webpack_require__(39), _angularjs2.default]).service('PhoneBookService', _PhoneBookService2.default).filter('PhoneBookFilter', _PhoneBookFilter2.default).directive('showPhoneNumbers', _showPhoneNumbers2.default).directive('searchText', _searchText2.default).directive('addNewContact', _addNewContact2.default).directive('editContact', _editContact2.default).directive('contacts', _contacts2.default).directive('singleContact', _singleContact2.default).directive('phoneBook', _phoneBook2.default).directive('phoneBookAdd', _phoneBookAdd2.default).directive('phoneBookEdit', _phoneBookEdit2.default).directive('addClass', _addClass2.default).config(_PhoneBookRouter2.default);
 
 /***/ }),
 /* 6 */
@@ -44200,6 +44200,10 @@ function contacts() {
         controller: function controller($scope, PhoneBookService) {
             $scope.allContacts = PhoneBookService.getAll();
         },
+        scope: {
+            'isNumbersVisible': '=',
+            'searchText': '='
+        },
         templateUrl: './templates/contacts.html'
     };
 }
@@ -44218,6 +44222,11 @@ exports.default = singleContact;
 function singleContact() {
     return {
         restrict: 'A',
+        scope: {
+            'contact': '=',
+            'removeContact': '&',
+            'isNumbersVisible': '='
+        },
         controller: function controller($scope, PhoneBookService) {
             $scope.onClick = function (name, phoneNumber) {
                 $scope.removeContact({ name: name, phoneNumber: phoneNumber });
@@ -44225,11 +44234,6 @@ function singleContact() {
             $scope.getContactIndex = function (name, phoneNumber) {
                 return PhoneBookService.getContactIndex(name, phoneNumber);
             };
-        },
-        scope: {
-            'contact': '=',
-            'removeContact': '&',
-            'isNumbersVisible': '='
         },
         templateUrl: './templates/single-contact.html'
     };
@@ -44250,7 +44254,6 @@ function phoneBook() {
     return {
         restrict: 'E',
         controller: function controller($scope, PhoneBookService) {
-
             $scope.searchText = '';
             $scope.isNumbersVisible = true;
 
@@ -44354,8 +44357,8 @@ function addClass() {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = PhoneBookRouters;
-function PhoneBookRouters($stateProvider, $urlRouterProvider) {
+exports.default = PhoneBookRouter;
+function PhoneBookRouter($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 
     $stateProvider.state('home', {
@@ -44410,7 +44413,7 @@ exports = module.exports = __webpack_require__(24)(undefined);
 
 
 // module
-exports.push([module.i, "* {\n  font-family: inherit;\n  font-size: 100%;\n  font-weight: inherit;\n  font-style: inherit;\n  margin: 0;\n  padding: 0;\n  vertical-align: baseline;\n  border: 0 none; }\n\nhtml {\n  height: 100%; }\n\nbody {\n  min-height: 100%;\n  position: relative;\n  background: #d8d8d8;\n  font-family: \"Gotham Book\";\n  color: #666; }\n  body .wrapper {\n    padding-bottom: 70px; }\n    body .wrapper header {\n      width: 100%;\n      height: 63px;\n      background: #464c59;\n      color: #fff;\n      font-family: \"Gotham Medium\";\n      font-size: 17px;\n      line-height: 63px;\n      text-align: center;\n      text-transform: uppercase; }\n      body .wrapper header h1 {\n        cursor: pointer; }\n    body .wrapper .main {\n      width: 435px;\n      margin: 40px auto;\n      background: #f4f4f4; }\n      body .wrapper .main form {\n        padding: 10px;\n        border-top: 1px solid #2a2d34;\n        border-right: 1px solid #2a2d34;\n        border-left: 1px solid #2a2d34; }\n        body .wrapper .main form dl {\n          padding-top: 10px; }\n          body .wrapper .main form dl dt, body .wrapper .main form dl dd {\n            margin-bottom: 9px; }\n            body .wrapper .main form dl dt input, body .wrapper .main form dl dd input {\n              padding: 7px 7px;\n              border-radius: 3px;\n              border: 1px solid #b4b4b4; }\n            body .wrapper .main form dl dt input#searchText, body .wrapper .main form dl dd input#searchText {\n              width: 397px; }\n\n.form-bottom-border {\n  border-bottom: 1px solid #2a2d34; }\n\n.show-phone-numbers {\n  display: inline-block; }\n\n::-webkit-input-placeholder {\n  font-family: \"Gotham Light\";\n  font-size: 14px;\n  color: #b4b4b4; }\n\n/* Firefox 19+ */\n::-moz-placeholder {\n  font-family: \"Gotham Light\";\n  font-size: 14px;\n  color: #b4b4b4; }\n\n/* Firefox 18- */\n:-moz-placeholder {\n  font-family: \"Gotham Light\";\n  font-size: 14px;\n  color: #b4b4b4; }\n\n:-ms-input-placeholder {\n  font-family: \"Gotham Light\";\n  font-size: 14px;\n  color: #b4b4b4; }\n\nbutton {\n  margin-left: 5px;\n  padding: 9px 12px;\n  border-radius: 3px;\n  background: #505766;\n  color: #e5e5e5;\n  text-transform: uppercase;\n  font-size: 14px;\n  float: right;\n  cursor: pointer; }\n\nbutton:hover,\nbutton:focus,\nbutton:active {\n  background: #373c46; }\n\ntable {\n  width: 100%;\n  border-spacing: 0;\n  border-collapse: collapse; }\n\ntd {\n  padding: 5px;\n  border: 1px solid #2a2d34; }\n\n.edit-contact {\n  float: right;\n  cursor: pointer;\n  margin-right: 5px; }\n\n.edit-contact::after {\n  content: 'x';\n  font-family: \"Gotham Bold\"; }\n\n.edit-contact:hover::after,\n.edit-contact:focus::after,\n.edit-contact:hover::after {\n  color: #373c46; }\n\n.remove-contact {\n  float: right;\n  cursor: pointer;\n  margin-right: 5px; }\n\n.remove-contact::after {\n  content: '\\270E';\n  font-family: \"Gotham Bold\"; }\n\n.remove-contact:hover::after,\n.remove-contact:focus::after,\n.remove-contact:hover::after {\n  color: #373c46; }\n\n.contact-name {\n  width: 50%; }\n\n.contact-phone-number {\n  width: 50%; }\n\n.highlight-with-red {\n  background: #dc6362;\n  color: #e5e5e5; }\n\n.highlight-with-blue {\n  background: #505766;\n  color: #e5e5e5; }\n\n.animate-show-hide.ng-hide {\n  opacity: 0; }\n\n.animate-show-hide.ng-hide-add,\n.animate-show-hide.ng-hide-remove {\n  transition: all linear 0.8s; }\n\n.is-phone-numbers-visible {\n  opacity: 1; }\n\nfooter {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  height: 70px;\n  width: 100%;\n  background: #363a44;\n  font-family: \"Gotham Book\";\n  font-size: 14px;\n  line-height: 63px;\n  color: #fff;\n  text-align: center; }\n\n/*****FONTS********/\n@font-face {\n  font-family: 'Gotham Bold';\n  src: url(\"" + __webpack_require__(1) + "\");\n  src: url(\"" + __webpack_require__(1) + "?#iefix\") format(\"embedded-opentype\"), url(\"" + __webpack_require__(25) + "\") format(\"woff2\"), url(\"" + __webpack_require__(26) + "\") format(\"woff\"), url(\"" + __webpack_require__(27) + "#Gotham Bold\") format(\"svg\");\n  font-weight: 700;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Book';\n  src: url(" + __webpack_require__(2) + ");\n  src: url(" + __webpack_require__(2) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(28) + ") format(\"woff2\"), url(" + __webpack_require__(29) + ") format(\"woff\"), url(" + __webpack_require__(30) + "#Gotham-Book) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Light';\n  src: url(" + __webpack_require__(3) + ");\n  src: url(" + __webpack_require__(3) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(31) + ") format(\"woff2\"), url(" + __webpack_require__(32) + ") format(\"woff\"), url(" + __webpack_require__(33) + "#Gotham-Light) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Medium';\n  src: url(" + __webpack_require__(4) + ");\n  src: url(" + __webpack_require__(4) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(34) + ") format(\"woff2\"), url(" + __webpack_require__(35) + ") format(\"woff\"), url(" + __webpack_require__(36) + "#Gotham-Medium) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n", ""]);
+exports.push([module.i, "* {\n  font-family: inherit;\n  font-size: 100%;\n  font-weight: inherit;\n  font-style: inherit;\n  margin: 0;\n  padding: 0;\n  vertical-align: baseline;\n  border: 0 none; }\n\nhtml {\n  height: 100%; }\n\nbody {\n  min-height: 100%;\n  position: relative;\n  background: #d8d8d8;\n  font-family: \"Gotham Book\";\n  color: #666; }\n  body .wrapper {\n    padding-bottom: 70px; }\n    body .wrapper header {\n      width: 100%;\n      height: 63px;\n      background: #464c59;\n      color: #fff;\n      font-family: \"Gotham Medium\";\n      font-size: 17px;\n      line-height: 63px;\n      text-align: center;\n      text-transform: uppercase; }\n      body .wrapper header h1 {\n        cursor: pointer; }\n    body .wrapper .main {\n      width: 435px;\n      margin: 40px auto;\n      background: #f4f4f4; }\n      body .wrapper .main .form-bottom-border {\n        border-bottom: 1px solid #2a2d34; }\n      body .wrapper .main form {\n        padding: 10px;\n        border-top: 1px solid #2a2d34;\n        border-right: 1px solid #2a2d34;\n        border-left: 1px solid #2a2d34; }\n        body .wrapper .main form dl {\n          padding-top: 10px; }\n          body .wrapper .main form dl .show-phone-numbers {\n            display: inline-block; }\n          body .wrapper .main form dl dt, body .wrapper .main form dl dd {\n            margin-bottom: 9px; }\n            body .wrapper .main form dl dt input, body .wrapper .main form dl dd input {\n              padding: 7px 7px;\n              border-radius: 3px;\n              border: 1px solid #b4b4b4; }\n            body .wrapper .main form dl dt input#searchText, body .wrapper .main form dl dd input#searchText {\n              width: 397px; }\n          body .wrapper .main form dl button {\n            margin-left: 5px;\n            padding: 9px 12px;\n            border-radius: 3px;\n            background: #505766;\n            color: #e5e5e5;\n            text-transform: uppercase;\n            font-size: 14px;\n            float: right;\n            cursor: pointer; }\n            body .wrapper .main form dl button:hover, body .wrapper .main form dl button:focus, body .wrapper .main form dl button:active {\n              background: #373c46; }\n      body .wrapper .main table {\n        width: 100%;\n        border-spacing: 0;\n        border-collapse: collapse; }\n        body .wrapper .main table .highlight-with-red {\n          background: #dc6362;\n          color: #e5e5e5; }\n        body .wrapper .main table .highlight-with-blue {\n          background: #505766;\n          color: #e5e5e5; }\n        body .wrapper .main table .contact-name,\n        body .wrapper .main table .contact-phone-number {\n          width: 50%; }\n        body .wrapper .main table td {\n          padding: 5px;\n          border: 1px solid #2a2d34; }\n          body .wrapper .main table td .is-phone-numbers-visible {\n            opacity: 1; }\n          body .wrapper .main table td .edit-contact {\n            float: right;\n            cursor: pointer;\n            margin-right: 5px; }\n            body .wrapper .main table td .edit-contact::after {\n              content: 'x';\n              font-family: \"Gotham Bold\"; }\n            body .wrapper .main table td .edit-contact:hover::after, body .wrapper .main table td .edit-contact:focus::after, body .wrapper .main table td .edit-contact:hover::after {\n              color: #373c46; }\n          body .wrapper .main table td .remove-contact {\n            float: right;\n            cursor: pointer;\n            margin-right: 5px; }\n            body .wrapper .main table td .remove-contact::after {\n              content: '\\270E';\n              font-family: \"Gotham Bold\"; }\n            body .wrapper .main table td .remove-contact:hover::after, body .wrapper .main table td .remove-contact:focus::after, body .wrapper .main table td .remove-contact:hover::after {\n              color: #373c46; }\n  body footer {\n    position: absolute;\n    left: 0;\n    bottom: 0;\n    height: 70px;\n    width: 100%;\n    background: #363a44;\n    font-family: \"Gotham Book\";\n    font-size: 14px;\n    line-height: 63px;\n    color: #fff;\n    text-align: center; }\n\n.animate-show-hide.ng-hide {\n  opacity: 0; }\n\n.animate-show-hide.ng-hide-add,\n.animate-show-hide.ng-hide-remove {\n  transition: all linear 0.8s; }\n\n::-webkit-input-placeholder {\n  font-family: \"Gotham Light\";\n  font-size: 14px;\n  color: #b4b4b4; }\n\n/* Firefox 19+ */\n::-moz-placeholder {\n  font-family: \"Gotham Light\";\n  font-size: 14px;\n  color: #b4b4b4; }\n\n/* Firefox 18- */\n:-moz-placeholder {\n  font-family: \"Gotham Light\";\n  font-size: 14px;\n  color: #b4b4b4; }\n\n:-ms-input-placeholder {\n  font-family: \"Gotham Light\";\n  font-size: 14px;\n  color: #b4b4b4; }\n\n/*****FONTS********/\n@font-face {\n  font-family: 'Gotham Bold';\n  src: url(\"" + __webpack_require__(1) + "\");\n  src: url(\"" + __webpack_require__(1) + "?#iefix\") format(\"embedded-opentype\"), url(\"" + __webpack_require__(25) + "\") format(\"woff2\"), url(\"" + __webpack_require__(26) + "\") format(\"woff\"), url(\"" + __webpack_require__(27) + "#Gotham Bold\") format(\"svg\");\n  font-weight: 700;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Book';\n  src: url(" + __webpack_require__(2) + ");\n  src: url(" + __webpack_require__(2) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(28) + ") format(\"woff2\"), url(" + __webpack_require__(29) + ") format(\"woff\"), url(" + __webpack_require__(30) + "#Gotham-Book) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Light';\n  src: url(" + __webpack_require__(3) + ");\n  src: url(" + __webpack_require__(3) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(31) + ") format(\"woff2\"), url(" + __webpack_require__(32) + ") format(\"woff\"), url(" + __webpack_require__(33) + "#Gotham-Light) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n\n@font-face {\n  font-family: 'Gotham Medium';\n  src: url(" + __webpack_require__(4) + ");\n  src: url(" + __webpack_require__(4) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(34) + ") format(\"woff2\"), url(" + __webpack_require__(35) + ") format(\"woff\"), url(" + __webpack_require__(36) + "#Gotham-Medium) format(\"svg\");\n  font-weight: 300;\n  font-style: normal;\n  font-stretch: normal;\n  unicode-range: U+0020-00FE; }\n", ""]);
 
 // exports
 

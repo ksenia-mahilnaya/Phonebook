@@ -4,9 +4,9 @@ export default function editContact() {
         scope: {
             editContact: '&'
         },
-        controller: function($scope, $state, $stateParams, PhoneBookService) {
+        controller: function($scope, $state, $stateParams, phoneBookService) {
             $scope.getContact = function(indexOfContact) {
-                return PhoneBookService.getContact(indexOfContact);
+                return phoneBookService.getContact(indexOfContact);
             };
 
             $scope.contactName = $scope.getContact(+$stateParams.id).name;

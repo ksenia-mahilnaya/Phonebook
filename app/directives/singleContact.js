@@ -6,12 +6,12 @@ export default function singleContact() {
             'removeContact': '&',
             'isNumbersVisible': '='
         },
-        controller: function($scope,PhoneBookService) {
+        controller: function($scope, phoneBookService) {
             $scope.onClick = function(name, phoneNumber) {
                 $scope.removeContact({name: name, phoneNumber: phoneNumber});
             };
             $scope.getContactIndex = function(name, phoneNumber) {
-                return PhoneBookService.getContactIndex(name, phoneNumber);
+                return phoneBookService.getContactIndex(name, phoneNumber);
             };
         },
         templateUrl: './templates/single-contact.html'
