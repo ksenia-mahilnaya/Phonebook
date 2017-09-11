@@ -16,6 +16,7 @@ $color-form-border: #2a2d34;
 $color-font-light: #e5e5e5;
 $color-footer-background: #363a44;
 $color-remove-contact-hover: #373c46;
+$color-error: #a60014;
 
 * {
     font-family: inherit;
@@ -73,30 +74,41 @@ body {
                     }
                     dt, dd {
                         margin-bottom: 9px;
+                        .error {
+                            margin: 5px 0;
+                            font-family: $font-book;
+                            font-size: 14px;
+                            color: $color-error;
+                        }
                         input {
                             padding: 7px 7px;
                             border-radius: 3px;
                             border: 1px solid $color-placeholders;
                         }
+                        input#contactName,
+                        input#contactNumber {
+                            width: 96%;
+                        }
                         input#searchText {
                             width: 397px;
                         }
                     }
-                    button {
-                        margin-left: 5px;
-                        padding: 9px 12px;
-                        border-radius: 3px;
-                        background: $color-highlight-with-blue;
-                        color: $color-font-light;
-                        text-transform: uppercase;
-                        font-size: 14px;
-                        float: right;
-                        cursor: pointer;
-                        &:hover,
-                        &:focus,
-                        &:active {
-                            background: $color-remove-contact-hover;
-                        }
+                }
+                input[type="submit"],
+                button {
+                    margin-left: 5px;
+                    padding: 9px 12px;
+                    border-radius: 3px;
+                    background: $color-highlight-with-blue;
+                    color: $color-font-light;
+                    text-transform: uppercase;
+                    font-size: 14px;
+                    float: right;
+                    cursor: pointer;
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        background: $color-remove-contact-hover;
                     }
                 }
             }

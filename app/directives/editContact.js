@@ -14,7 +14,9 @@ export default function editContact() {
 
             $scope.onClick = function(newName, newPhoneNumber) {
                 $scope.editContact({newName: newName, newPhoneNumber: newPhoneNumber, indexOfContact: +$stateParams.id});
-                $state.go("home");
+                if ($scope.editContactForm.$valid) {
+                    $state.go("home");
+                }
             };
 
 

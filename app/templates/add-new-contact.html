@@ -1,8 +1,28 @@
-<dt><label for="contactName">Add new contact</label></dt>
-<dd>
-    <input ng-model="contactName" placeholder="Name" id="contactName">
-    <input type="tel" ng-model="contactPhoneNumber" placeholder="Phone number">
-</dd>
-<button ng-click="onClick(contactName, contactPhoneNumber)">
-    Add contact
-</button>
+<form name="addContactForm" class="form-bottom-border" novalidate>
+    <fieldset>
+        <dl>
+            <dt><label for="contactName">Add new contact</label></dt>
+            <dd>
+                <input type="text" ng-model="contactName" name="contactName" placeholder="Name" id="contactName"
+                       ng-maxlength="15" ng-minlength="3" required>
+                <div class="error" ng-messages="addContactForm.contactName.$error" role="alert">
+                    <p ng-message="required">You did not enter a field</p>
+                    <p ng-message="minlength">Your field is too short</p>
+                    <p ng-message="maxlength">Your field is too long</p>
+                </div>
+            </dd>
+            <dd>
+                <input type="tel" ng-model="contactPhoneNumber" placeholder="Phone number" name="contactNumber"
+                       ng-minlength="9" id="contactNumber" ng-maxlength="17" required id="contactNumber"
+                       ng-pattern="/^[\+]?[8]?[(]?[0-9]{3}[)]?[(]?([0-9]{2})?[)]?[0-9]{3}[-\s]?[0-9]{2}[-\s]?[0-9]{2}$/">
+                <div class="error" ng-messages="addContactForm.contactNumber.$error" role="alert">
+                    <p ng-message="required">This field is required</p>
+                    <p ng-message="minlength">Your field is too short</p>
+                    <p ng-message="maxlength">Your field is too long</p>
+                    <p ng-message="pattern">Must be a valid phone number</p>
+                </div>
+            </dd>
+        </dl>
+            <input type="submit" value="Add contact" ng-click="onClick(contactName, contactPhoneNumber)">
+    </fieldset>
+</form>

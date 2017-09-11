@@ -7,9 +7,9 @@ export default function addNewContact() {
         controller: function($scope, $state) {
             $scope.onClick = function(name, phoneNumber) {
                 $scope.addContact({name: name, phoneNumber: phoneNumber});
-                $scope.contactName = '';
-                $scope.contactPhoneNumber = null;
-                $state.go("home");
+                if ($scope.addContactForm.$valid) {
+                    $state.go("home");
+                }
             };
         },
         templateUrl: './templates/add-new-contact.html'

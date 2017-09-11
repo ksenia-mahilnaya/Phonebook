@@ -1,5 +1,6 @@
 import angular from 'angular';
 import uiRouter from '@uirouter/angularjs';
+import ngMessages from 'angular-messages';
 
 import phoneBookService from './app/services/phoneBookService';
 import phoneBookFilter from './app/filters/phoneBookFilter';
@@ -17,7 +18,7 @@ import phoneBookRouter from './app/routers/phoneBookRouter';
 
 import './app/styles/styles.scss';
 
-angular.module('app', [require('angular-animate'), uiRouter])
+angular.module('app', [require('angular-animate'), uiRouter, ngMessages])
     .service('phoneBookService', phoneBookService)
     .filter('phoneBookFilter', phoneBookFilter)
     .directive('showPhoneNumbers', showPhoneNumbers)
